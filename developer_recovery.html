@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Developer Recovery Tool | শপ ম্যানেজমেন্ট প্রো</title>
+  <meta name="description" content="Shop Management Pro Developer Emergency Challenge-Response Token Generator" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700;900&family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #0b0f19;
+      --bg-card: #111827;
+      --bg-card-alt: #1a2234;
+      --border-color: #243048;
+      --border-hover: #3b82f6;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --primary-lt: rgba(59, 130, 246, 0.14);
+      --success: #10b981;
+      --success-lt: rgba(16, 185, 129, 0.12);
+      --danger: #ef4444;
+      --danger-lt: rgba(239, 68, 68, 0.12);
+      --warning: #f59e0b;
+      --font-ui: 'Hind Siliguri', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --shadow-lg: 0 16px 36px -8px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      --shadow-glow: 0 0 24px rgba(59, 130, 246, 0.25);
+    }
+
+    [data-theme="light"] {
+      --bg-base: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-card-alt: #f1f5f9;
+      --border-color: #e2e8f0;
+      --border-hover: #2563eb;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-lt: rgba(37, 99, 235, 0.1);
+      --success: #059669;
+      --success-lt: rgba(5, 150, 105, 0.1);
+      --danger: #dc2626;
+      --danger-lt: rgba(220, 38, 38, 0.1);
+      --warning: #d97706;
+      --shadow-lg: 0 12px 30px -6px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
+      --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-ui);
+      font-size: 14.5px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+      flex: 1;
+    }
+
+    /* Top Bar */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    }
+
+    .brand-text h1 {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .brand-text p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-toggle {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      font-family: var(--font-ui);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 7px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-toggle:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-alt);
+    }
+
+    /* Main Card */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6, #10b981);
+    }
+
+    .badge-dev {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-lt);
+      color: var(--primary);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+    }
+
+    .desc-text {
+      color: var(--text-muted);
+      font-size: 13.5px;
+      margin-bottom: 20px;
+      line-height: 1.55;
+    }
+
+    /* Input Section */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .label-hint {
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .code-input {
+      width: 100%;
+      height: 52px;
+      background: var(--bg-card-alt);
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0 44px 0 16px;
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+
+    .code-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+      background: var(--bg-card);
+    }
+
+    .code-input::placeholder {
+      color: var(--text-muted);
+      opacity: 0.45;
+      letter-spacing: 1px;
+      font-size: 16px;
+    }
+
+    .clear-btn {
+      position: absolute;
+      right: 12px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 16px;
+      cursor: pointer;
+      padding: 6px;
+      display: none;
+      border-radius: 50%;
+      line-height: 1;
+    }
+
+    .clear-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .input-helper {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Result Box */
+    .result-card {
+      background: var(--bg-card-alt);
+      border: 1.5px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .result-card.active {
+      border-color: var(--success);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+      background: var(--bg-card-alt);
+    }
+
+    .result-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .token-display {
+      font-family: var(--font-mono);
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: var(--success);
+      padding: 10px 0;
+      user-select: all;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .token-placeholder {
+      color: var(--text-muted);
+      opacity: 0.35;
+      font-size: 24px;
+      letter-spacing: 2px;
+    }
+
+    /* Actions Grid */
+    .btn-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .btn {
+      padding: 11px 16px;
+      border-radius: 10px;
+      font-family: var(--font-ui);
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .btn-success {
+      background: var(--success);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    }
+
+    .btn-success:hover:not(:disabled) {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+    }
+
+    .btn-whatsapp:hover:not(:disabled) {
+      background: #20bd5a;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      background: var(--bg-card-alt);
+      border-color: var(--border-hover);
+    }
+
+    /* History & Protocol Section */
+    .sec-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+
+    .sec-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .sec-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border-color);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12.5px;
+    }
+
+    .history-codes {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+
+    .history-arrow {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .history-time {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .history-copy-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--primary);
+      font-size: 13px;
+      padding: 4px;
+      border-radius: 4px;
+    }
+
+    .history-copy-btn:hover {
+      background: var(--primary-lt);
+    }
+
+    .empty-history {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12.5px;
+      padding: 16px;
+    }
+
+    /* How it works info */
+    .info-box {
+      background: rgba(59, 130, 246, 0.08);
+      border-left: 4px solid var(--primary);
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .info-box ol {
+      margin-top: 6px;
+      padding-left: 20px;
+    }
+
+    .info-box li {
+      margin-bottom: 4px;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0f172a;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 13.5px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 580px) {
+      .btn-group {
+        grid-template-columns: 1fr;
+      }
+      .token-display {
+        font-size: 26px;
+      }
+      .code-input {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Topbar -->
+    <div class="topbar">
+      <div class="brand-wrap">
+        <div class="brand-icon">🛠️</div>
+        <div class="brand-text">
+          <h1 id="ui_app_title">ডেভেলপার রিকভারি টুল</h1>
+          <p id="ui_app_sub">শপ ম্যানেজমেন্ট প্রো • রেসকিউ টোকেন জেনারেটর</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button class="btn-toggle" onclick="toggleLanguage()" id="langBtn" title="Change Language">
+          🌐 <span id="currentLangText">English</span>
+        </button>
+        <button class="btn-toggle" onclick="toggleTheme()" id="themeBtn" title="Toggle Theme">
+          🌙
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Generator Card -->
+    <div class="card">
+      <div class="badge-dev">
+        <span>⚡</span> <span id="ui_badge_text">ইমার্জেন্সি মাস্টার কি জেনারেটর</span>
+      </div>
+      <p class="desc-text" id="ui_desc_text">
+        গ্রাহকের শপ ম্যানেজমেন্ট প্রো অ্যাপে প্রদর্শিত ডায়নামিক চ্যালেঞ্জ কোডটি নিচের ঘরে দিন। সিস্টেম স্বয়ংক্রিয়ভাবে সংশ্লিষ্ট আনলক টোকেন তৈরি করবে।
+      </p>
+
+      <!-- Input Form -->
+      <div class="form-group">
+        <label class="form-label" for="challengeInput">
+          <span id="ui_lbl_challenge">গ্রাহকের চ্যালেঞ্জ কোড (Challenge Code):</span>
+          <span class="label-hint">CHL-XXXX-XXXX</span>
+        </label>
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="challengeInput"
+            class="code-input"
+            placeholder="CHL-1234-5678"
+            maxlength="16"
+            autocomplete="off"
+            spellcheck="false"
+            autofocus
+            oninput="handleChallengeInput(this.value)"
+          />
+          <button class="clear-btn" id="clearBtn" onclick="clearInput()" title="Clear">✕</button>
+        </div>
+        <div class="input-helper">
+          <span>💡</span> <span id="ui_helper_text">গ্রাহকের পাঠানো মেসেজ থেকে সরাসরি কোডটি এখানে পেস্ট করতে পারেন।</span>
+        </div>
+      </div>
+
+      <!-- Result Card -->
+      <div class="result-card" id="resultCard">
+        <div class="result-title" id="ui_result_title">মাস্টার রেসকিউ টোকেন (Master Rescue Token)</div>
+        <div class="token-display" id="tokenDisplay">
+          <span class="token-placeholder">REC-••••-••••</span>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-success" id="copyBtn" onclick="copyToken()" disabled>
+            📋 <span id="ui_btn_copy">টোকেন কপি করুন</span>
+          </button>
+          <a class="btn btn-whatsapp" id="waBtn" href="#" target="_blank" disabled>
+            📲 <span id="ui_btn_whatsapp">WhatsApp এ পাঠান</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Token Verification Test Tool -->
+    <div class="sec-card">
+      <div class="sec-header">
+        <div class="sec-title">
+          <span>🧪</span> <span id="ui_sec_verify">কোড যাচাইকরণ (Quick Verification)</span>
+        </div>
+      </div>
+      <div style="font-size:12.5px; color:var(--text-muted); margin-bottom:10px;" id="ui_verify_desc">
+        কোনো পূর্ববর্তী চ্যালেঞ্জ ও রেসপন্স টোকেন পরস্পর সামঞ্জস্যপূর্ণ কি না তা পরীক্ষা করুন:
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <input type="text" id="testChallengeInp" class="code-input" style="flex:1; height:40px; font-size:14px;" placeholder="CHL-XXXX-XXXX" />
+        <input type="text" id="testResponseInp" class="code-input" style="flex:1; height:40px; font-size:14px;" placeholder="REC-XXXX-XXXX" />
+        <button class="btn btn-outline" style="height:40px; padding:0 14px;" onclick="testPairVerification()">
+          <span id="ui_btn_test">যাচাই করুন</span>
+        </button>
+      </div>
+      <div id="verifyResultMsg" style="margin-top:8px; font-size:12.5px; font-weight:700; display:none;"></div>
+    </div>
+
+    <!-- Session History -->
+    <div class="sec-card">
+      <div class="sec-header">
+        <div class="sec-title">
+          <span>🕒</span> <span id="ui_sec_history">সম্প্রতি জেনারেট করা কোড হিস্ট্রি</span>
+        </div>
+        <button class="btn-toggle" style="padding:4px 8px; font-size:11px;" onclick="clearHistory()" id="ui_btn_clear_history">
+          🗑️ হিস্ট্রি মুছুন
+        </button>
+      </div>
+      <div class="history-list" id="historyList">
+        <div class="empty-history" id="ui_empty_history">এখনও কোনো কোড জেনারেট করা হয়নি।</div>
+      </div>
+    </div>
+
+    <!-- Developer Security Protocol Guide -->
+    <div class="sec-card">
+      <div class="sec-title" style="margin-bottom:10px;">
+        <span>🔒</span> <span id="ui_sec_guide">নিরাপত্তা ও কাজের নিয়ম (How it Works)</span>
+      </div>
+      <div class="info-box">
+        <strong id="ui_guide_title">চ্যালেঞ্জ-রেসপন্স হ্যান্ডশেক নিরাপত্তা:</strong>
+        <ol id="ui_guide_list">
+          <li>গ্রাহক যখন অ্যাপে "ডেভেলপার রেসকিউ" খুলবেন, তখন প্রতিবার নতুন একটি র্যান্ডম চ্যালেঞ্জ কোড তৈরি হয়।</li>
+          <li>গ্রাহক কোডটি পাঠালে এখানে দিন এবং তৈরি হওয়া <strong>REC-XXXX-XXXX</strong> টোকেনটি গ্রাহককে দিন।</li>
+          <li>একবার আনলক হয়ে গেলে সফটওয়্যার ওই চ্যালেঞ্জটি স্বয়ংক্রিয়ভাবে নষ্ট (Burn) করে দেয়, ফলে পুরনো কোড আর কাজ করবে না।</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p id="ui_footer_text">শপ ম্যানেজমেন্ট প্রো • অফলাইন সিকিউর রিকভারি ইঞ্জিন</p>
+      <p style="margin-top:4px; font-size:11px; opacity:0.7;">Algorithm: DJB2 Dual-Round Cryptographic Salted Nonce</p>
+    </footer>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <span id="toastIcon">✅</span>
+    <span id="toastMsg">কপি করা হয়েছে!</span>
+  </div>
+
+  <script>
+    // --- Cryptographic Algorithm Parity with index.html ---
+    const RESCUE_SALT = "SMP_PRO_DEV_RESCUE_SECRET_KEY_9941_X7K";
+
+    function calculateRescueResponse(challengeCode) {
+      const clean = String(challengeCode || "").trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
+      if (!clean || clean.length < 6) return null;
+
+      let hash = 5381;
+      const combined = clean + "_" + RESCUE_SALT;
+      for (let i = 0; i < combined.length; i++) {
+        hash = ((hash << 5) + hash) + combined.charCodeAt(i);
+        hash = hash & hash;
+      }
+      const h1 = Math.abs(hash);
+
+      let hash2 = 5381;
+      const combined2 = combined + "_ROUND2";
+      for (let i = 0; i < combined2.length; i++) {
+        hash2 = ((hash2 << 5) + hash2) + combined2.charCodeAt(i);
+        hash2 = hash2 & hash2;
+      }
+      const h2 = Math.abs(hash2);
+
+      const p1 = String(1000 + (h1 % 9000));
+      const p2 = String(1000 + (h2 % 9000));
+      return `REC-${p1}-${p2}`;
+    }
+
+    // --- Localization (বাংলা & English) ---
+    const i18n = {
+      bn: {
+        app_title: "ডেভেলপার রিকভারি টুল",
+        app_sub: "শপ ম্যানেজমেন্ট প্রো • রেসকিউ টোকেন জেনারেটর",
+        badge_text: "ইমার্জেন্সি মাস্টার কি জেনারেটর",
+        desc_text: "গ্রাহকের শপ ম্যানেজমেন্ট প্রো অ্যাপে প্রদর্শিত ডায়নামিক চ্যালেঞ্জ কোডটি নিচের ঘরে দিন। সিস্টেম স্বয়ংক্রিয়ভাবে সংশ্লিষ্ট আনলক টোকেন তৈরি করবে।",
+        lbl_challenge: "গ্রাহকের চ্যালেঞ্জ কোড (Challenge Code):",
+        helper_text: "গ্রাহকের পাঠানো মেসেজ থেকে সরাসরি কোডটি এখানে পেস্ট করতে পারেন।",
+        result_title: "মাস্টার রেসকিউ টোকেন (Master Rescue Token)",
+        btn_copy: "টোকেন কপি করুন",
+        btn_whatsapp: "WhatsApp এ পাঠান",
+        sec_verify: "কোড যাচাইকরণ (Quick Verification)",
+        verify_desc: "কোনো পূর্ববর্তী চ্যালেঞ্জ ও রেসপন্স টোকেন পরস্পর সামঞ্জস্যপূর্ণ কি না তা পরীক্ষা করুন:",
+        btn_test: "যাচাই করুন",
+        sec_history: "সম্প্রতি জেনারেট করা কোড হিস্ট্রি",
+        btn_clear_history: "🗑️ হিস্ট্রি মুছুন",
+        empty_history: "এখনও কোনো কোড জেনারেট করা হয়নি।",
+        sec_guide: "নিরাপত্তা ও কাজের নিয়ম (How it Works)",
+        guide_title: "চ্যালেঞ্জ-রেসপন্স হ্যান্ডশেক নিরাপত্তা:",
+        guide_items: [
+          "গ্রাহক যখন অ্যাপে 'ডেভেলপার রেসকিউ' খুলবেন, তখন প্রতিবার নতুন একটি র্যান্ডম চ্যালেঞ্জ কোড তৈরি হয়।",
+          "গ্রাহকের চ্যালেঞ্জ এখানে পেস্ট করুন এবং তৈরি হওয়া <strong>REC-XXXX-XXXX</strong> টোকেনটি গ্রাহককে দিন।",
+          "গ্রাহক এই টোকেন এবং নিজের পছন্দের নতুন পাসওয়ার্ড একসাথে লিখে সাথে সাথে অ্যাকাউন্ট আনলক করে নিতে পারবেন।"
+        ],
+        footer_text: "শপ ম্যানেজমেন্ট প্রো • অফলাইন সিকিউর রিকভারি ইঞ্জিন",
+        copied_toast: "টোকেন ক্লিপবোর্ডে কপি করা হয়েছে! 📋",
+        history_cleared: "হিস্ট্রি সফলভাবে মুছে ফেলা হয়েছে।",
+        valid_pair: "✅ সঠিক! চ্যালেঞ্জ ও রেসপন্স টোকেন দুটি পরস্পরের সাথে শতভাগ মিলেছে।",
+        invalid_pair: "❌ ভুল! এই চ্যালেঞ্জের জন্য প্রদত্ত রেসপন্স টোকেনটি সঠিক নয়।",
+        fill_both: "⚠️ উভয় ঘরে চ্যালেঞ্জ ও রেসপন্স কোড লিখুন।",
+        wa_template: "আসসালামু আলাইকুম। আপনার শপ ম্যানেজমেন্ট প্রো অ্যাপের মাস্টার আনলক টোকেন: {TOKEN} । সফটওয়্যারে গিয়ে এই কোডটি দিয়ে সরাসরি আপনার পছন্দের নতুন পাসওয়ার্ড সেট করে নিন। ধন্যবাদ।"
+      },
+      en: {
+        app_title: "Developer Recovery Tool",
+        app_sub: "Shop Management Pro • Rescue Token Generator",
+        badge_text: "Emergency Master Key Generator",
+        desc_text: "Enter the dynamic challenge code displayed in the customer's Shop Management Pro app. The system will automatically compute the corresponding unlock token.",
+        lbl_challenge: "Customer Challenge Code:",
+        helper_text: "You can paste the code directly from customer's WhatsApp message.",
+        result_title: "Master Rescue Token",
+        btn_copy: "Copy Token",
+        btn_whatsapp: "Share on WhatsApp",
+        sec_verify: "Quick Verification",
+        verify_desc: "Verify if a previous Challenge and Response pair match accurately:",
+        btn_test: "Verify Pair",
+        sec_history: "Recent Generated Tokens History",
+        btn_clear_history: "🗑️ Clear History",
+        empty_history: "No tokens generated yet in this session.",
+        sec_guide: "Security & Workflow Protocol",
+        guide_title: "Challenge-Response Handshake Security:",
+        guide_items: [
+          "Every time the customer opens 'Developer Rescue' in the app, a fresh random challenge is generated.",
+          "Paste the challenge here and provide the generated <strong>REC-XXXX-XXXX</strong> token to the customer.",
+          "Customer enters this token and their new password directly in one step to unlock their account immediately."
+        ],
+        footer_text: "Shop Management Pro • Offline Secure Recovery Engine",
+        copied_toast: "Token copied to clipboard! 📋",
+        history_cleared: "History cleared successfully.",
+        valid_pair: "✅ Valid! The Challenge and Response token match 100%.",
+        invalid_pair: "❌ Invalid! The provided response token does not match this challenge.",
+        fill_both: "⚠️ Please enter both Challenge and Response codes to verify.",
+        wa_template: "Hello! Your Shop Management Pro Master Unlock Token is: {TOKEN} . Please enter this code in the app and set your desired new password immediately. Thank you."
+      }
+    };
+
+    let currentLang = localStorage.getItem("dev_recovery_lang") || "bn";
+    let currentTheme = localStorage.getItem("dev_recovery_theme") || "dark";
+    let activeToken = null;
+    let activeChallenge = null;
+    let historyData = [];
+
+    try {
+      const storedHistory = localStorage.getItem("smp_dev_recovery_history");
+      if (storedHistory) historyData = JSON.parse(storedHistory);
+    } catch(e) { historyData = []; }
+
+    // --- Language Controller ---
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem("dev_recovery_lang", lang);
+      document.documentElement.lang = lang;
+      const t = i18n[lang];
+
+      document.getElementById("ui_app_title").textContent = t.app_title;
+      document.getElementById("ui_app_sub").textContent = t.app_sub;
+      document.getElementById("ui_badge_text").textContent = t.badge_text;
+      document.getElementById("ui_desc_text").textContent = t.desc_text;
+      document.getElementById("ui_lbl_challenge").textContent = t.lbl_challenge;
+      document.getElementById("ui_helper_text").textContent = t.helper_text;
+      document.getElementById("ui_result_title").textContent = t.result_title;
+      document.getElementById("ui_btn_copy").textContent = t.btn_copy;
+      document.getElementById("ui_btn_whatsapp").textContent = t.btn_whatsapp;
+      document.getElementById("ui_sec_verify").textContent = t.sec_verify;
+      document.getElementById("ui_verify_desc").textContent = t.verify_desc;
+      document.getElementById("ui_btn_test").textContent = t.btn_test;
+      document.getElementById("ui_sec_history").textContent = t.sec_history;
+      document.getElementById("ui_btn_clear_history").textContent = t.btn_clear_history;
+      document.getElementById("ui_sec_guide").textContent = t.sec_guide;
+      document.getElementById("ui_guide_title").textContent = t.guide_title;
+      document.getElementById("ui_footer_text").textContent = t.footer_text;
+
+      // Update Guide Items
+      const listEl = document.getElementById("ui_guide_list");
+      listEl.innerHTML = t.guide_items.map(item => `<li>${item}</li>`).join("");
+
+      // Update Lang Button Label
+      document.getElementById("currentLangText").textContent = lang === "bn" ? "English" : "বাংলা";
+
+      renderHistory();
+      updateWhatsAppLink();
+    }
+
+    function toggleLanguage() {
+      setLanguage(currentLang === "bn" ? "en" : "bn");
+      showToast(currentLang === "bn" ? "ভাষা পরিবর্তন: বাংলা" : "Language set: English");
+    }
+
+    // --- Theme Controller ---
+    function setTheme(theme) {
+      currentTheme = theme;
+      localStorage.setItem("dev_recovery_theme", theme);
+      document.documentElement.setAttribute("data-theme", theme);
+      const btn = document.getElementById("themeBtn");
+      if (btn) btn.textContent = theme === "dark" ? "☀️" : "🌙";
+    }
+
+    function toggleTheme() {
+      setTheme(currentTheme === "dark" ? "light" : "dark");
+    }
+
+    // --- Toast Helper ---
+    let toastTimer = null;
+    function showToast(msg, icon = "✅") {
+      const toast = document.getElementById("toast");
+      const msgEl = document.getElementById("toastMsg");
+      const iconEl = document.getElementById("toastIcon");
+      if (!toast) return;
+      msgEl.textContent = msg;
+      iconEl.textContent = icon;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2500);
+    }
+
+    // --- Challenge Normalization & Token Calculation ---
+    function normalizeChallenge(raw) {
+      if (!raw) return "";
+      let s = String(raw).toUpperCase().trim();
+      // Match pattern like CHL-XXXX-XXXX
+      const mFull = s.match(/CHL-?([A-Z0-9]{4})-?([A-Z0-9]{4})/);
+      if (mFull) {
+        return `CHL-${mFull[1]}-${mFull[2]}`;
+      }
+      // If only 8 digits/hex entered:
+      const digitsOnly = s.replace(/[^A-Z0-9]/g, "");
+      if (digitsOnly.length === 8 && !digitsOnly.startsWith("CHL")) {
+        return `CHL-${digitsOnly.slice(0, 4)}-${digitsOnly.slice(4, 8)}`;
+      }
+      return s;
+    }
+
+    function handleChallengeInput(val) {
+      const clearBtn = document.getElementById("clearBtn");
+      clearBtn.style.display = val.length > 0 ? "block" : "none";
+
+      const normalized = normalizeChallenge(val);
+      const isComplete = /^CHL-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(normalized);
+
+      const resultCard = document.getElementById("resultCard");
+      const tokenDisplay = document.getElementById("tokenDisplay");
+      const copyBtn = document.getElementById("copyBtn");
+      const waBtn = document.getElementById("waBtn");
+
+      if (isComplete) {
+        const token = calculateRescueResponse(normalized);
+        activeToken = token;
+        activeChallenge = normalized;
+
+        tokenDisplay.innerHTML = `<span style="animation: pulse 0.3s ease;">${token}</span>`;
+        resultCard.classList.add("active");
+        copyBtn.disabled = false;
+        waBtn.removeAttribute("disabled");
+        updateWhatsAppLink();
+
+        saveToHistory(normalized, token);
+      } else {
+        activeToken = null;
+        activeChallenge = null;
+        tokenDisplay.innerHTML = '<span class="token-placeholder">REC-••••-••••</span>';
+        resultCard.classList.remove("active");
+        copyBtn.disabled = true;
+        waBtn.setAttribute("disabled", "true");
+        waBtn.href = "#";
+      }
+    }
+
+    function clearInput() {
+      const input = document.getElementById("challengeInput");
+      input.value = "";
+      handleChallengeInput("");
+      input.focus();
+    }
+
+    function copyToken() {
+      if (!activeToken) return;
+      copyToClipboard(activeToken);
+      showToast(i18n[currentLang].copied_toast);
+    }
+
+    function copyToClipboard(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch(e) {}
+      document.body.removeChild(ta);
+    }
+
+    function updateWhatsAppLink() {
+      const waBtn = document.getElementById("waBtn");
+      if (!activeToken || !waBtn) return;
+      const t = i18n[currentLang];
+      const message = t.wa_template.replace("{TOKEN}", activeToken);
+      waBtn.href = "https://wa.me/?text=" + encodeURIComponent(message);
+    }
+
+    // --- History Management ---
+    function saveToHistory(challenge, response) {
+      // Don't duplicate the exact same immediately
+      if (historyData.length > 0 && historyData[0].challenge === challenge && historyData[0].response === response) {
+        return;
+      }
+      historyData.unshift({
+        challenge,
+        response,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        date: new Date().toLocaleDateString()
+      });
+      if (historyData.length > 15) historyData.pop();
+      try {
+        localStorage.setItem("smp_dev_recovery_history", JSON.stringify(historyData));
+      } catch(e) {}
+      renderHistory();
+    }
+
+    function renderHistory() {
+      const listEl = document.getElementById("historyList");
+      if (!listEl) return;
+      const t = i18n[currentLang];
+
+      if (historyData.length === 0) {
+        listEl.innerHTML = `<div class="empty-history">${t.empty_history}</div>`;
+        return;
+      }
+
+      listEl.innerHTML = historyData.map((item, idx) => `
+        <div class="history-item">
+          <div class="history-codes">
+            <span style="color:var(--primary);">${escapeHtml(item.challenge)}</span>
+            <span class="history-arrow">➔</span>
+            <span style="color:var(--success);">${escapeHtml(item.response)}</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span class="history-time">${item.time}</span>
+            <button class="history-copy-btn" onclick="copyHistoryToken('${item.response}')" title="Copy Token">
+              📋
+            </button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function copyHistoryToken(token) {
+      copyToClipboard(token);
+      showToast(i18n[currentLang].copied_toast);
+    }
+
+    function clearHistory() {
+      historyData = [];
+      try { localStorage.removeItem("smp_dev_recovery_history"); } catch(e) {}
+      renderHistory();
+      showToast(i18n[currentLang].history_cleared, "🗑️");
+    }
+
+    // --- Quick Verification Tool ---
+    function testPairVerification() {
+      const c = document.getElementById("testChallengeInp").value.trim().toUpperCase();
+      const r = document.getElementById("testResponseInp").value.trim().toUpperCase();
+      const msgEl = document.getElementById("verifyResultMsg");
+      const t = i18n[currentLang];
+
+      if (!c || !r) {
+        msgEl.style.color = "var(--warning)";
+        msgEl.textContent = t.fill_both;
+        msgEl.style.display = "block";
+        return;
+      }
+
+      const expected = calculateRescueResponse(c);
+      if (expected && expected === r) {
+        msgEl.style.color = "var(--success)";
+        msgEl.textContent = t.valid_pair;
+      } else {
+        msgEl.style.color = "var(--danger)";
+        msgEl.textContent = t.invalid_pair;
+      }
+      msgEl.style.display = "block";
+    }
+
+    function escapeHtml(s) {
+      return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    // --- Init ---
+    document.addEventListener("DOMContentLoaded", () => {
+      setTheme(currentTheme);
+      setLanguage(currentLang);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "Shop Management Pro",
+  "description": "Offline-first shop management, inventory, POS billing, and business accounting system with bilingual (English & Bengali) support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

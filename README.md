@@ -9,8 +9,8 @@
 
 ## 📑 Table of Contents
 - [🚀 Live Demo](#-live-demo)
-- [📸 Screenshots](#-screenshots)
 - [✨ Key Features](#-key-features)
+- [🎯 Target Businesses](#-target-businesses)
 - [🛠 Technical Stack](#-technical-stack)
 - [📥 Installation Guide](#-installation-guide)
 - [📖 Usage & Shortcuts](#-usage--shortcuts)
@@ -23,13 +23,6 @@
 ## 🚀 Live Demo
 Access the full application directly in your browser:  
 🔗 **[Launch Shop Management Pro](https://tufaful.github.io/Shop-Management-Pro/)**
-
-## 📸 Screenshots
-*(Add your project screenshots here)*
-
-| Dashboard Overview | POS Interface | Inventory Management |
-| :---: | :---: | :---: |
-| ![Dashboard](https://via.placeholder.com/400x250?text=Dashboard+Preview) | ![POS](https://via.placeholder.com/400x250?text=POS+Preview) | ![Inventory](https://via.placeholder.com/400x250?text=Inventory+Preview) |
 
 ## ✨ Key Features
 
@@ -55,6 +48,15 @@ Access the full application directly in your browser:
 - **Access Control:** Secure with PIN, Pattern locks, and 2FA.
 - **Emergency Account Recovery:** Never get locked out of your data with our built-in challenge-response mechanism.
 
+## 🎯 Target Businesses
+This software is designed to cater to various retail and service-based industries:
+- **Grocery & Super Shops:** Fast POS for high-volume daily sales.
+- **Pharmacies:** Manage medicine inventory and billing.
+- **Electronics & Hardware:** Track specific brands and stock variations.
+- **Fashion & Boutiques:** Organize by style and category.
+- **Restaurants & Cafes:** Simple billing for small to medium food joints.
+- **Any Retail Store:** Perfect for any business needing a reliable, offline-first system.
+
 ## 🛠 Technical Stack
 - **Frontend:** Vanilla TypeScript, Tailwind CSS (Styling).
 - **Icons:** Lucide Icons (SVG).
@@ -66,7 +68,12 @@ Access the full application directly in your browser:
 Since this is a standalone project, no complex installation is required.
 1. Download the `index.html` file from the latest release.
 2. Open it in any modern browser (Chrome, Edge, Firefox).
-3. **Optional:** For hosting, simply upload to **GitHub Pages**.
+3. **Hosting & Deployment:**
+   - **GitHub Pages:** Free and highly recommended for hosting this standalone tool.
+   - **Netlify / Vercel:** Easy "drag-and-drop" deployment for immediate use.
+   - **Local Web Server:** Can be hosted on local networks using XAMPP, WAMP, or simple Node.js servers.
+4. **Mobile App Support (APK):**
+   - You can convert this web application into an Android APK using tools like **WebToApp**, **Website 2 APK Builder**, or by using browser **PWA** (Install to Home Screen) features for a native app-like experience.
 
 ## 📖 Usage & Shortcuts
 | Key | Action |
@@ -106,8 +113,8 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 
 ## 📑 সূচিপত্র
 - [🚀 লাইভ ডেমো](#-লাইভ-ডেমো)
-- [📸 স্ক্রিনশট](#-স্ক্রিনশট)
 - [✨ মূল বৈশিষ্ট্যসমূহ](#-মূল-বৈশিষ্ট্যসমূহ)
+- [🎯 উপযোগী ব্যবসা](#-উপযোগী-ব্যবসা)
 - [🛠 টেকনিক্যাল স্ট্যাক](#-টেকনিক্যাল-স্ট্যাক)
 - [📥 ইনস্টলেশন গাইড](#-ইনস্টলেশন-গাইড)
 - [📖 শর্টকাট সমূহ](#-শর্টকাট-সমূহ)
@@ -120,13 +127,6 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 ## 🚀 লাইভ ডেমো
 সরাসরি ব্রাউজারে অ্যাপটি ব্যবহার করতে নিচের লিংকে ক্লিক করুন:  
 🔗 **[শপ ম্যানেজমেন্ট প্রো ওপেন করুন](https://tufaful.github.io/Shop-Management-Pro/)**
-
-## 📸 স্ক্রিনশট
-*(এখানে আপনার প্রজেক্টের স্ক্রিনশট যুক্ত করুন)*
-
-| ড্যাশবোর্ড ওভারভিউ | পিওএস ইন্টারফেস | ইনভেন্টরি ম্যানেজমেন্ট |
-| :---: | :---: | :---: |
-| ![Dashboard](https://via.placeholder.com/400x250?text=Dashboard+Preview) | ![POS](https://via.placeholder.com/400x250?text=POS+Preview) | ![Inventory](https://via.placeholder.com/400x250?text=Inventory+Preview) |
 
 ## ✨ মূল বৈশিষ্ট্যসমূহ
 
@@ -152,6 +152,15 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 - **অ্যাক্সেস কন্ট্রোল:** পিন (PIN), প্যাটার্ন লক এবং ২এফএ (2FA) সিকিউরিটি।
 - **ইমার্জেন্সি অ্যাকাউন্ট রিকভারি:** চ্যালেঞ্জ-রেসপন্স মেকানিজমের মাধ্যমে আপনার ডাটা সব সময় সুরক্ষিত এবং পুনরুদ্ধারযোগ্য।
 
+## 🎯 উপযোগী ব্যবসা
+এই সফটওয়্যারটি নিচের ব্যবসাগুলোর কথা মাথায় রেখে তৈরি করা হয়েছে:
+- **মুদি ও সুপার শপ:** প্রতিদিনের প্রচুর বিক্রি দ্রুত বিল করার জন্য আদর্শ।
+- **ফার্মেসী:** ওষুধের ইনভেন্টরি এবং বিলিং ম্যানেজমেন্ট।
+- **ইলেকট্রনিক্স ও হার্ডওয়্যার:** নির্দিষ্ট ব্র্যান্ড ও স্টকের হিসাব রাখা।
+- **ফ্যাশন ও গার্মেন্টস:** ক্যাটাগরি অনুযায়ী প্রোডাক্ট সাজানো।
+- **রেস্টুরেন্ট ও ক্যাফে:** ছোট ও মাঝারি খাবারের দোকানের বিলিং সলিউশন।
+- **যেকোনো খুচরা দোকান:** যেখানেই নির্ভুল এবং অফলাইন সিস্টেম প্রয়োজন।
+
 ## 🛠 টেকনিক্যাল স্ট্যাক
 - **ফ্রন্টএন্ড:** ভ্যানিলা টাইপস্ক্রিপ্ট, টেলউইন্ড সিএসএস।
 - **আইকন:** লুসাইড আইকন (SVG)।
@@ -162,7 +171,12 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 ## 📥 ইনস্টলেশন গাইড
 ১. লেটেস্ট রিলিজ থেকে `index.html` ফাইলটি ডাউনলোড করুন।
 ২. যেকোনো মডার্ন ব্রাউজারে (Chrome, Edge, Firefox) ফাইলটি ওপেন করুন।
-৩. **ঐচ্ছিক:** অনলাইন হোস্ট করার জন্য **GitHub Pages** ব্যবহার করতে পারেন।
+৩. **হোস্টিং ও ডেপ্লয়মেন্ট:**
+   - **GitHub Pages:** এটি ফ্রিতে হোস্ট করার জন্য সবচেয়ে জনপ্রিয় মাধ্যম।
+   - **Netlify / Vercel:** খুব সহজেই ফাইল আপলোড করে অনলাইনে লাইভ করা যায়।
+   - **লোকাল সার্ভার:** XAMPP বা লোকাল আইপি ব্যবহার করে দোকানের ভেতরে নেটওয়ার্ক তৈরি করা সম্ভব।
+৪. **মোবাইল অ্যাপ সাপোর্ট (APK):**
+   - আপনি **WebToApp**, **Website 2 APK Builder** বা এই ধরণের টুল ব্যবহার করে এই ওয়েবসাইটটিকে একটি অ্যান্ড্রয়েড অ্যাপ (APK) হিসেবে ব্যবহার করতে পারবেন। এছাড়া ব্রাউজারের **PWA** (Add to Home Screen) ফিচার ব্যবহার করেও এটি অ্যাপের মতো চালানো যায়।
 
 ## 📖 শর্টকাট সমূহ
 | শর্টকাট | কাজ |

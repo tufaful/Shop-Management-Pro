@@ -17434,6 +17434,32 @@ async function renderReports(container) {
     if (!window.App.HELP_TOPICS) {
       window.App.HELP_TOPICS = [
         {
+          id: "project_info",
+          icon: "🚀",
+          titleBangla: "প্রজেক্ট ইনফো ও আপডেট",
+          titleEnglish: "Project Info & Updates",
+          contentBangla: `
+            <h3 style="font-size:16px; font-weight:700; margin-bottom:12px; color:var(--primary);">শপ ম্যানেজমেন্ট প্রো - অফিশিয়াল ওয়েবসাইট</h3>
+            <p style="margin-bottom:12px; line-height:1.6;">সফটওয়্যারটির সর্বশেষ আপডেট, নতুন ফিচার এবং ডকুমেন্টেশন পেতে আমাদের অফিশিয়াল ওয়েবসাইট ভিজিট করুন।</p>
+            <div style="background:var(--primary-lt); border:1px solid var(--primary); padding:16px; border-radius:12px; text-align:center; margin-bottom:16px;">
+               <a href="https://tufaful.github.io/Shop-Management-Pro/" target="_blank" style="text-decoration:none; display:block;">
+                  <div style="font-size:14px; font-weight:800; color:var(--primary); margin-bottom:8px;">🔗 tufaful.github.io/Shop-Management-Pro</div>
+                  <button class="btn btn-primary" style="height:44px; border-radius:10px; width:100%; font-weight:800;">ওয়েবসাইট ভিজিট করুন</button>
+               </a>
+            </div>
+          `,
+          contentEnglish: `
+            <h3 style="font-size:16px; font-weight:700; margin-bottom:12px; color:var(--primary);">Shop Management Pro - Official Website</h3>
+            <p style="margin-bottom:12px; line-height:1.6;">Visit our official website to check for the latest updates, new features, and full documentation.</p>
+            <div style="background:var(--primary-lt); border:1px solid var(--primary); padding:16px; border-radius:12px; text-align:center; margin-bottom:16px;">
+               <a href="https://tufaful.github.io/Shop-Management-Pro/" target="_blank" style="text-decoration:none; display:block;">
+                  <div style="font-size:14px; font-weight:800; color:var(--primary); margin-bottom:8px;">🔗 tufaful.github.io/Shop-Management-Pro</div>
+                  <button class="btn btn-primary" style="height:44px; border-radius:10px; width:100%; font-weight:800;">Visit Official Website</button>
+               </a>
+            </div>
+          `
+        },
+        {
           id: "dashboard",
           icon: "📊",
           titleBangla: "পরিচিতি ও ড্যাশবোর্ড",
@@ -45039,6 +45065,21 @@ window.App.deletePurchase = async function(purchaseId) {
 
             <!-- Developer Action Icons (Icon-Only, Auto-open on click, No link text shown) -->
             <div style="display:flex; justify-content:center; align-items:center; gap:20px; margin:16px 0 24px;">
+              <!-- Website Action Icon -->
+              <a href="https://tufaful.github.io/Shop-Management-Pro/" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 title="${isBn ? "প্রজেক্ট ওয়েবসাইট ভিজিট করুন" : "Visit Project Website"}"
+                 aria-label="Website"
+                 style="width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg, #0f172a, #334155); color:#ffffff; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px rgba(15,23,42,0.3); text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease; cursor:pointer;"
+                 onmouseover="this.style.transform='translateY(-3px) scale(1.06)'; this.style.boxShadow='0 12px 26px rgba(15,23,42,0.4)';"
+                 onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 20px rgba(15,23,42,0.3)';"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </a>
+
               <!-- Email Action Icon -->
               <a href="mailto:ambia.inbox@gmail.com" 
                  target="_blank" 

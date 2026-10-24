@@ -1,9 +1,9 @@
-# Shop Management Pro (শপ ম্যানেজমেন্ট প্রো)
+# Shop Management Pro
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge)](https://tufaful.github.io/Shop-Management-Pro/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-**Shop Management Pro** is a professional, offline-first, all-in-one Business Management and POS solution. Designed for efficiency and reliability, it operates as a single standalone HTML file using browser storage (IndexedDB), ensuring your data stays local and accessible even without internet.
+**Shop Management Pro** is a high-performance, offline-first, all-in-one Business Management and Point of Sale (POS) solution. Designed for maximum efficiency, speed, and reliability, it operates as a single standalone HTML web application powered by browser storage (IndexedDB), ensuring your business data remains 100% private, local, and fully accessible even without an active internet connection.
 
 ---
 
@@ -11,200 +11,140 @@
 - [🚀 Live Demo](#-live-demo)
 - [✨ Key Features](#-key-features)
 - [🎯 Target Businesses](#-target-businesses)
-- [🛠 Technical Stack](#-technical-stack)
-- [📥 Installation Guide](#-installation-guide)
-- [📖 Usage & Shortcuts](#-usage--shortcuts)
+- [🛠 Technical Stack & Architecture](#-technical-stack--architecture)
+- [📥 Installation & Deployment](#-installation--deployment)
+- [📱 Mobile App Support (APK & PWA)](#-mobile-app-support-apk--pwa)
+- [📖 Keyboard Shortcuts](#-keyboard-shortcuts)
 - [🤝 Contributing & Support](#-contributing--support)
-- [🛠 Account Recovery](#-lost-pin-or-2fa-account-recovery)
+- [🛠 Emergency Account Recovery](#-emergency-account-recovery)
 - [🛡 License](#-license)
 
 ---
 
 ## 🚀 Live Demo
-Access the full application directly in your browser:  
+Launch and test the full application directly in any modern desktop or mobile browser:  
 🔗 **[Launch Shop Management Pro](https://tufaful.github.io/Shop-Management-Pro/)**
+
+---
 
 ## ✨ Key Features
 
-### 🛒 Point of Sale (POS) & Billing
-- **Fast Checkout:** Optimized billing interface with barcode scanning support.
-- **Hotkeys:** Specialized keys for quick actions (F2, F4, F8).
-- **Flexible Payments:** Support for Cash, Bank, MFS (bKash/Nagad), and Split payments.
-- **Thermal Printing:** Professional receipts in 80mm, 58mm, A4, and A5 formats.
+### 🛒 Point of Sale (POS) & Fast Billing
+- **Lightning Checkout:** Rapid product addition via barcode scanning or real-time search.
+- **Product Filtering & Categories:** Instant category tabs and visual product grids.
+- **Dedicated Hotkeys:** Streamlined cashier workflow with keyboard shortcuts (`F2`, `F4`, `F8`).
+- **Flexible Split Payments:** Accept Cash, Bank Transfer, Mobile Financial Services (bKash, Nagad, Rocket), and partial/credit due.
+- **Multi-Format Receipt Printing:** Professional thermal receipts (80mm, 58mm) as well as A4/A5 standard invoices with instant WhatsApp sharing.
+- **Held Carts (Suspended Sales):** Put active customer carts on hold and resume them at any time.
 
-### 📦 Inventory & Stock
-- **Smart Tracking:** Real-time stock updates with automated low-stock alerts.
-- **Categorization:** Organize products by category and brand.
-- **Profit Analysis:** Track purchase vs. sales prices for margin calculation.
+### 📦 Inventory & Stock Control
+- **Real-Time Tracking:** Instant automatic stock decrements and increment handling upon sales, purchases, or returns.
+- **Low Stock Alerts:** Visual warning badges and filtered views for depleted items.
+- **Product Variations & Units:** Full support for categories, brands, barcode numbers, and flexible measurement units (pcs, kg, liter, etc.).
+- **Profit & Margin Analysis:** Track purchase costs versus selling prices with live gross profit calculations.
 
-### 💰 Finance & CRM
-- **Multi-Account:** Manage Cash, Bank, and Mobile Wallets in one place.
-- **Auto-Ledgers:** Automated logs for every sale, purchase, and expense.
-- **CRM:** Customer and Supplier ledgers with due tracking and credit limits.
+### 💰 Finance, Accounting & Multi-Account Banking
+- **Multi-Account Ledgers:** Seamlessly link and monitor Cash Drawer, Bank Accounts, and Mobile Financial Service (MFS) wallets.
+- **Automated Bookkeeping:** Instant dual-entry journal logs for all sales, purchases, supplier payments, customer collections, and operational expenses.
+- **Financial Statements:** Daily cash closing reports, net profit/loss analysis, revenue breakdown, and date-range transaction ledgers.
 
-### 🔒 Security & Data
-- **Offline-First:** All data stored locally in IndexedDB.
-- **Safe Backups:** Export data as JSON, encrypted files, or modular snapshots.
-- **Access Control:** Secure with PIN, Pattern locks, and 2FA.
-- **Emergency Account Recovery:** Never get locked out of your data with our built-in challenge-response mechanism.
+### 👥 CRM & Customer / Supplier Ledgers
+- **Customer Due & Credit Tracking:** Full history of purchases, payment collections, outstanding balances, and credit limits.
+- **Supplier Procurement:** Track purchase orders, invoices, purchase returns, and supplier dues.
+- **Money Receipts:** Print dedicated collection vouchers and supplier payment slips.
+
+### 🔒 Security, Privacy & Data Preservation
+- **100% Offline-First:** Operates independently without cloud dependencies; your data never leaves your device unless you export it.
+- **Granular Access Control:** Protect sensitive financial data with Owner/Staff roles, PIN code, Pattern unlock, and Time-based Two-Factor Authentication (2FA).
+- **Flexible Vault Backups:** Export plain JSON, modular selective backups, or military-grade AES encrypted snapshot files.
+- **Emergency Account Recovery:** Challenge-response rescue protocol using the companion recovery tool to restore administrative access safely.
+
+---
 
 ## 🎯 Target Businesses
-This software is designed to cater to various retail and service-based industries:
-- **Grocery & Super Shops:** Fast POS for high-volume daily sales.
-- **Pharmacies:** Manage medicine inventory and billing.
-- **Electronics & Hardware:** Track specific brands and stock variations.
-- **Fashion & Boutiques:** Organize by style and category.
-- **Restaurants & Cafes:** Simple billing for small to medium food joints.
-- **Any Retail Store:** Perfect for any business needing a reliable, offline-first system.
+Shop Management Pro is crafted to empower small, medium, and growing retail enterprises:
+- **Grocery & Supermarkets:** High-volume barcode checkout and quick daily cash closing.
+- **Pharmacies & Drugstores:** Medicine inventory, batch tracking, and fast prescription billing.
+- **Electronics & Hardware Stores:** Brand categorization, serial/barcode management, and warranty memos.
+- **Fashion, Clothing & Footwear:** Organized category layouts, sizes, and customer credit ledgers.
+- **Departmental & Stationery Stores:** Extensive SKU handling with real-time stock alert thresholds.
+- **Restaurants & Cafes:** Counter billing with held carts and split tender payment options.
 
-## 🛠 Technical Stack
-- **Frontend:** Vanilla TypeScript, Tailwind CSS (Styling).
-- **Icons:** Lucide Icons (SVG).
-- **Database:** IndexedDB (Local persistence).
-- **Architecture:** Single-file standalone application (SPA).
-- **Print Engine:** Custom CSS-based thermal/document generator.
+---
 
-## 📥 Installation Guide
-Since this is a standalone project, no complex installation is required.
-1. Download the `index.html` file from the latest release.
-2. Open it in any modern browser (Chrome, Edge, Firefox).
-3. **Hosting & Deployment:**
-   - **GitHub Pages:** Free and highly recommended for hosting this standalone tool.
-   - **Netlify / Vercel:** Easy "drag-and-drop" deployment for immediate use.
-   - **Local Web Server:** Can be hosted on local networks using XAMPP, WAMP, or simple Node.js servers.
-4. **Mobile App Support (APK):**
-   - You can convert this web application into an Android APK using tools like **WebToApp**, **Website 2 APK Builder**, or by using browser **PWA** (Install to Home Screen) features for a native app-like experience.
+## 🛠 Technical Stack & Architecture
+- **Frontend Core:** Pure Vanilla TypeScript / JavaScript with reactive DOM state management.
+- **Styling & Design System:** Tailwind CSS utility styling with comprehensive Dark & Light theme support.
+- **Vector Icons:** Lucide SVG icon set embedded for standalone offline rendering.
+- **Local Persistence Layer:** Browser-native IndexedDB engine with indexed query cursors.
+- **Print Engine:** CSS print stylesheets optimized for standard printers and ESC/POS thermal printers (80mm / 58mm).
+- **Distribution Model:** 100% self-contained Single Page Application (`index.html`).
 
-## 📖 Usage & Shortcuts
-| Key | Action |
-| :--- | :--- |
-| **F2** | Product Search |
-| **F4** | Customer Search |
-| **F8** | Complete Sale |
-| **Ctrl + /** | Global Search |
-| **ESC** | Close Modal |
+---
+
+## 📥 Installation & Deployment
+
+Because Shop Management Pro is bundled as a standalone single-file application, no complicated server setup, database provisioning, or package installation is required.
+
+### 1. Local Offline Usage
+1. Download the `index.html` file from the repository.
+2. Double-click to open it in any modern browser (Google Chrome, Microsoft Edge, Mozilla Firefox, Safari, Brave, or Opera).
+3. The app is ready to use immediately—no internet connection required.
+
+### 2. Web Hosting & Deployment
+- **GitHub Pages:** Fork or push the repository to GitHub, enable **GitHub Pages** under repository settings, and your POS is live globally in seconds.
+- **Netlify / Vercel:** Simply drag and drop the project folder or point the build to `index.html`.
+- **Local Area Network (LAN):** Host on an in-store server (using XAMPP, Nginx, Apache, or a lightweight Node.js server) to allow multiple staff devices/tablets on the local Wi-Fi network to connect.
+
+---
+
+## 📱 Mobile App Support (APK & PWA)
+
+Shop Management Pro is fully responsive and touch-optimized for tablets, iPads, and smartphones:
+- **Progressive Web App (PWA):** Open the application in mobile Chrome or Safari, tap **"Add to Home Screen"**, and launch it just like a native mobile app with full-screen viewport support.
+- **Android APK Conversion:** Wrap the hosted link or local `index.html` file using tools such as **WebToApp**, **Website 2 APK Builder**, or **Capacitor** to compile a standalone installable Android APK file.
+
+---
+
+## 📖 Keyboard Shortcuts
+
+Speed up daily counter billing and navigation with integrated hotkeys:
+
+| Shortcut | Action | Description |
+| :--- | :--- | :--- |
+| **`F2`** | Product Search | Focus product catalog search input in POS |
+| **`F4`** | Customer Selector | Open customer lookup and selection combobox |
+| **`F8`** | Complete Sale | Trigger quick checkout / payment completion dialog |
+| **`Ctrl + /`** | Global Search | Open unified global navigation and record finder |
+| **`ESC`** | Close Modal | Dismiss any active dialog, popup, or preview sheet |
+
+---
 
 ## 🤝 Contributing & Support
-Contributions are welcome! If you find a bug or have a feature request:
-1. Open an **[Issue](https://github.com/tufaful/Shop-Management-Pro/issues)**.
-2. Fork the repository and submit a **Pull Request**.
-3. Join the discussion for new features.
+Contributions, feedback, and feature suggestions are warmly welcomed!
+- Found a bug or need an improvement? Open an issue on the **[GitHub Issues](https://github.com/tufaful/Shop-Management-Pro/issues)** page.
+- Have a feature branch ready? Submit a **Pull Request**.
 
-### 🛠 Lost PIN or 2FA? (Account Recovery)
-If you are locked out of your account, follow these simple steps:
+---
 
-1.  **Generate Challenge:** On the app's lock screen, click on **Developer Rescue**. You will see a unique **Challenge Code** (e.g., `CHL-XXXX-XXXX`).
-2.  **Contact Support:** Send this code to the developer via [Email](mailto:ambia.inbox@gmail.com) or [WhatsApp](https://wa.me/tufaful).
-3.  **Token Generation:** The developer will use the official **Developer Recovery Tool (`developer_recovery.html`)** to generate a secure **Rescue Token** for you.
-4.  **Regain Access:** Enter the provided token into your app to reset your security credentials and log in instantly.
+## 🛠 Emergency Account Recovery
 
+If the shop administrator ever forgets the PIN or loses access to their 2FA credentials, account access can be recovered securely without losing business records:
+
+1. **Generate Challenge Code:** On the application lock screen, tap **Developer Rescue**. A unique random challenge code will be generated (e.g., `CHL-XXXX-XXXX`).
+2. **Contact Support:** Send this challenge code to the software author via [Email](mailto:ambia.inbox@gmail.com) or [WhatsApp](https://wa.me/tufaful).
+3. **Token Generation:** The author uses the companion **Developer Recovery Tool (`developer_recovery.html`)** to generate a single-use cryptographic **Rescue Token**.
+4. **Regain Access:** Enter the received token into the prompt to reset your master credentials and restore your account immediately.
+
+---
 
 ## 🛡 License
-Distributed under the **MIT License**. See `LICENSE` for more information.
+This project is open-source and distributed under the terms of the **[MIT License](LICENSE)**.
 
----
----
-
-# শপ ম্যানেজমেন্ট প্রো (বাংলা)
-
-**শপ ম্যানেজমেন্ট প্রো** একটি পেশাদার, অফলাইন-ফার্স্ট এবং অল-ইন-ওয়ান বিজনেস ম্যানেজমেন্ট ও পিওএস (POS) সলিউশন। এটি একটি স্ট্যান্ডঅ্যালোন এইচটিএমএল (HTML) ফাইল হিসেবে কাজ করে এবং ব্রাউজার স্টোরেজ (IndexedDB) ব্যবহার করে আপনার তথ্য নিরাপদ রাখে।
+```
+Copyright (c) 2026 Tufaful Ambia
+```
 
 ---
 
-## 📑 সূচিপত্র
-- [🚀 লাইভ ডেমো](#-লাইভ-ডেমো)
-- [✨ মূল বৈশিষ্ট্যসমূহ](#-মূল-বৈশিষ্ট্যসমূহ)
-- [🎯 উপযোগী ব্যবসা](#-উপযোগী-ব্যবসা)
-- [🛠 টেকনিক্যাল স্ট্যাক](#-টেকনিক্যাল-স্ট্যাক)
-- [📥 ইনস্টলেশন গাইড](#-ইনস্টলেশন-গাইড)
-- [📖 শর্টকাট সমূহ](#-শর্টকাট-সমূহ)
-- [🤝 কন্ট্রিবিউশন ও সাপোর্ট](#-কন্ট্রিবিউশন-ও-সাপোর্ট)
-- [🛠 অ্যাকাউন্ট রিকভারি](#-পিন-বা-২এফএ-2fa-ভুলে-গেছেন-অ্যাকাউন্ট-রিকভারি)
-- [🛡 লাইসেন্স](#-লাইসেন্স)
-
----
-
-## 🚀 লাইভ ডেমো
-সরাসরি ব্রাউজারে অ্যাপটি ব্যবহার করতে নিচের লিংকে ক্লিক করুন:  
-🔗 **[শপ ম্যানেজমেন্ট প্রো ওপেন করুন](https://tufaful.github.io/Shop-Management-Pro/)**
-
-## ✨ মূল বৈশিষ্ট্যসমূহ
-
-### 🛒 পয়েন্ট অফ সেল (POS) এবং বিলিং
-- **দ্রুত চেকআউট:** বারকোড স্ক্যানিং সাপোর্ট সহ অপ্টিমাইজড বিলিং ইন্টারফেস।
-- **শর্টকাট কী:** দ্রুত কাজের জন্য বিশেষ শর্টকাট (F2, F4, F8)।
-- **ফ্লেক্সিবল পেমেন্ট:** নগদ, ব্যাংক, বিকাশ/নগদ এবং স্প্লিট পেমেন্ট সাপোর্ট।
-- **থার্মাল প্রিন্টিং:** ৮০মিমি, ৫৮মিমি, A4 এবং A5 ফরম্যাটে রশিদ প্রিন্ট।
-
-### 📦 ইনভেন্টরি এবং স্টক
-- **স্মার্ট ট্র্যাকিং:** অটোমেটেড লো-স্টক অ্যালার্ট সহ রিয়েল-টাইম স্টক আপডেট।
-- **ক্যাটাগরি:** ক্যাটাগরি এবং ব্র্যান্ড অনুযায়ী প্রোডাক্ট সাজানো।
-- **লাভ বিশ্লেষণ:** নির্ভুল মার্জিন গণনার জন্য ক্রয় মূল্য বনাম বিক্রয় মূল্য ট্র্যাক করা।
-
-### 💰 ফিন্যান্স এবং সিআরএম (CRM)
-- **মাল্টি-অ্যাকাউন্ট:** নগদ, ব্যাংক এবং মোবাইল ওয়ালেট এক জায়গায় ম্যানেজ করুন।
-- **অটো-লেজার:** প্রতিটি লেনদেনের জন্য অটোমেটেড ট্রানজ্যাকশন লগ।
-- **CRM:** কাস্টমার এবং সাপ্লায়ার লেজার সহ বকেয়া ট্র্যাকিং।
-
-### 🔒 সিকিউরিটি এবং ডাটা
-- **অফলাইন-ফার্স্ট:** সমস্ত ডাটা ব্রাউজারের IndexedDB-তে জমা থাকে।
-- **নিরাপদ ব্যাকআপ:** JSON, এনক্রিপ্টেড ফাইল বা স্ন্যাপশট হিসেবে ডাটা এক্সপোর্ট।
-- **অ্যাক্সেস কন্ট্রোল:** পিন (PIN), প্যাটার্ন লক এবং ২এফএ (2FA) সিকিউরিটি।
-- **ইমার্জেন্সি অ্যাকাউন্ট রিকভারি:** চ্যালেঞ্জ-রেসপন্স মেকানিজমের মাধ্যমে আপনার ডাটা সব সময় সুরক্ষিত এবং পুনরুদ্ধারযোগ্য।
-
-## 🎯 উপযোগী ব্যবসা
-এই সফটওয়্যারটি নিচের ব্যবসাগুলোর কথা মাথায় রেখে তৈরি করা হয়েছে:
-- **মুদি ও সুপার শপ:** প্রতিদিনের প্রচুর বিক্রি দ্রুত বিল করার জন্য আদর্শ।
-- **ফার্মেসী:** ওষুধের ইনভেন্টরি এবং বিলিং ম্যানেজমেন্ট।
-- **ইলেকট্রনিক্স ও হার্ডওয়্যার:** নির্দিষ্ট ব্র্যান্ড ও স্টকের হিসাব রাখা।
-- **ফ্যাশন ও গার্মেন্টস:** ক্যাটাগরি অনুযায়ী প্রোডাক্ট সাজানো।
-- **রেস্টুরেন্ট ও ক্যাফে:** ছোট ও মাঝারি খাবারের দোকানের বিলিং সলিউশন।
-- **যেকোনো খুচরা দোকান:** যেখানেই নির্ভুল এবং অফলাইন সিস্টেম প্রয়োজন।
-
-## 🛠 টেকনিক্যাল স্ট্যাক
-- **ফ্রন্টএন্ড:** ভ্যানিলা টাইপস্ক্রিপ্ট, টেলউইন্ড সিএসএস।
-- **আইকন:** লুসাইড আইকন (SVG)।
-- **ডাটাবেজ:** ইনডেক্সড-ডিবি (IndexedDB)।
-- **আর্কিটেকচার:** স্ট্যান্ডঅ্যালোন সিঙ্গেল-ফাইল অ্যাপ্লিকেশন (SPA)।
-- **প্রিন্ট ইঞ্জিন:** কাস্টম সিএসএস-ভিত্তিক ডকুমেন্ট জেনারেটর।
-
-## 📥 ইনস্টলেশন গাইড
-১. লেটেস্ট রিলিজ থেকে `index.html` ফাইলটি ডাউনলোড করুন।
-২. যেকোনো মডার্ন ব্রাউজারে (Chrome, Edge, Firefox) ফাইলটি ওপেন করুন।
-৩. **হোস্টিং ও ডেপ্লয়মেন্ট:**
-   - **GitHub Pages:** এটি ফ্রিতে হোস্ট করার জন্য সবচেয়ে জনপ্রিয় মাধ্যম।
-   - **Netlify / Vercel:** খুব সহজেই ফাইল আপলোড করে অনলাইনে লাইভ করা যায়।
-   - **লোকাল সার্ভার:** XAMPP বা লোকাল আইপি ব্যবহার করে দোকানের ভেতরে নেটওয়ার্ক তৈরি করা সম্ভব।
-৪. **মোবাইল অ্যাপ সাপোর্ট (APK):**
-   - আপনি **WebToApp**, **Website 2 APK Builder** বা এই ধরণের টুল ব্যবহার করে এই ওয়েবসাইটটিকে একটি অ্যান্ড্রয়েড অ্যাপ (APK) হিসেবে ব্যবহার করতে পারবেন। এছাড়া ব্রাউজারের **PWA** (Add to Home Screen) ফিচার ব্যবহার করেও এটি অ্যাপের মতো চালানো যায়।
-
-## 📖 শর্টকাট সমূহ
-| শর্টকাট | কাজ |
-| :--- | :--- |
-| **F2** | প্রোডাক্ট সার্চ |
-| **F4** | কাস্টমার সার্চ |
-| **F8** | বিক্রয় সম্পন্ন করুন |
-| **Ctrl + /** | গ্লোবাল সার্চ |
-| **ESC** | উইন্ডো বন্ধ করুন |
-
-## 🤝 কন্ট্রিবিউশন ও সাপোর্ট
-যেকোনো ধরনের বাগ রিপোর্ট বা ফিচারের জন্য:
-১. একটি **[Issue](https://github.com/tufaful/Shop-Management-Pro/issues)** খুলুন।
-২. রিপোজিটরি ফর্ক করুন এবং **Pull Request** পাঠান।
-
-### 🛠 পিন বা ২এফএ (2FA) ভুলে গেছেন? (অ্যাকাউন্ট রিকভারি)
-আপনি যদি আপনার অ্যাকাউন্টে প্রবেশ করতে না পারেন, তবে নিচের সহজ ধাপগুলো অনুসরণ করুন:
-
-১. **চ্যালেঞ্জ কোড তৈরি:** অ্যাপের লক স্ক্রিনে গিয়ে **'ডেভেলপার রেসকিউ'** বাটনে ক্লিক করুন। আপনি একটি ইউনিক **চ্যালেঞ্জ কোড** দেখতে পাবেন (যেমন: `CHL-XXXX-XXXX`) ।
-২. **যোগাযোগ করুন:** এই কোডটি ডেভেলপারকে [ইমেইল](mailto:ambia.inbox@gmail.com) বা [হোয়াটসঅ্যাপের](https://wa.me/tufaful) মাধ্যমে পাঠান।
-৩. **টোকেন তৈরি:** ডেভেলপার তার অফিশিয়াল **ডেভেলপার রিকভারি টুল (`developer_recovery.html`)** ব্যবহার করে আপনার জন্য একটি ওয়ান-টাইম **রেসকিউ টোকেন** তৈরি করবেন।
-৪. **অ্যাক্সেস পুনরুদ্ধার:** প্রাপ্ত টোকেনটি আপনার অ্যাপে দিলেই সিকিউরিটি রিসেট হয়ে যাবে এবং আপনি সাথে সাথে অ্যাকাউন্টে প্রবেশ করতে পারবেন।
-
-
-## 🛡 লাইসেন্স
-এটি **MIT লাইসেন্স** এর অধীনে প্রকাশিত।
-
----
-
-Developed with ❤️ by **Tufaful**.  
-তৈরি করেছেন **তুফাফুল**।
+Developed with ❤️ by **Tufaful Ambia**.

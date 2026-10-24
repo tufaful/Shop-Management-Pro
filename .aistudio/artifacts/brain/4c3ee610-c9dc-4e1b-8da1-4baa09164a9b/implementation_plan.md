@@ -1,45 +1,34 @@
-# Implementation Plan - README.md Reorganization
+# Implementation Plan - Developer Recovery Documentation (Refined)
 
-This plan outlines the steps to restructure the `README.md` file for **Shop Management Pro** to make it more professional, organized, and informative.
+This plan outlines a visually appealing and highly structured way to present the **Developer Recovery** feature in the `README.md` file.
 
-## 1. Content Structure (Bilingual - Separated)
+## 1. Feature Highlights
+- Add **"Emergency Account Recovery"** to the **Security & Data** feature list in both languages.
 
-The README will be divided into two main parts: **English** followed by **Bengali**.
+## 2. Visually Structured Recovery Guide
+A dedicated section will be added under **Contributing & Support** (English) and **কন্ট্রিবিউশন ও সাপোর্ট** (Bengali) using a clean, step-by-step layout.
 
-### English Section
-1.  **Header:** Name, Logo (if any), and Badges (Demo, License).
-2.  **Introduction:** Brief overview of the project.
-3.  **Table of Contents:** Anchor links for quick navigation.
-4.  **🚀 Live Demo:** Direct link to the hosted application.
-5.  **📸 Screenshots:** Placeholders for UI previews (Dashboard, POS, Reports).
-6.  **✨ Key Features:** Categorized list of functionalities.
-7.  **🛠 Technical Stack:** List of technologies used (HTML5, Tailwind, IndexedDB, etc.).
-8.  **📥 Installation & Setup:** Guide for local use and hosting.
-9.  **📖 Usage & Keyboard Shortcuts:** Table of hotkeys.
-10. **🤝 Contributing & Support:** How to report bugs or contribute.
-11. **🛡 License:** MIT License info.
+### English Section:
+#### 🛠 Lost PIN or 2FA? (Account Recovery)
+If you are locked out of your account, follow these simple steps:
 
-### Bengali Section (বাংলা বিভাগ)
-1.  **হেডার:** নাম এবং ব্যাজসমূহ।
-2.  **ভূমিকা:** প্রজেক্টের সংক্ষিপ্ত বিবরণ।
-3.  **সূচিপত্র:** দ্রুত নেভিগেশনের জন্য লিংক।
-4.  **🚀 লাইভ ডেমো:** সরাসরি অ্যাপলিকেশন ব্যবহারের লিংক।
-5.  **📸 স্ক্রিনশট:** ইউজার ইন্টারফেসের প্রিভিউ।
-6.  **✨ মূল বৈশিষ্ট্যসমূহ:** ক্যাটাগরি ভিত্তিক ফিচার লিস্ট।
-7.  **🛠 টেকনিক্যাল স্ট্যাক:** ব্যবহৃত প্রযুক্তির তালিকা।
-8.  **📥 ইনস্টলেশন ও সেটআপ:** লোকাল ব্যবহারের গাইড।
-9.  **📖 ব্যবহার ও শর্টকাট:** কিবোর্ড হটকি টেবিল।
-10. **🤝 কন্ট্রিবিউশন ও সাপোর্ট:** বাগ রিপোর্ট বা কন্ট্রিবিউট করার নিয়ম।
-11. **🛡 লাইসেন্স:** লাইসেন্স সংক্রান্ত তথ্য।
+1.  **Generate Challenge:** On the app's lock screen, click on **Developer Rescue**. You will see a unique **Challenge Code** (e.g., `CHL-XXXX-XXXX`).
+2.  **Contact Support:** Send this code to the developer via [Email](mailto:ambia.inbox@gmail.com) or [WhatsApp](https://wa.me/tufaful).
+3.  **Token Generation:** The developer will use the official **Developer Recovery Tool (`developer_recovery.html`)** to generate a secure **Rescue Token** for you.
+4.  **Regain Access:** Enter the provided token into your app to reset your security credentials and log in instantly.
 
-## 2. Key Enhancements
-- **Table of Contents:** Improved navigation using Markdown anchors.
-- **Technical Stack:** Highlighting the "Single File" and "Offline-First" nature.
-- **Media Placeholders:** Using generic image tags or stylized boxes for the user to replace with actual screenshots.
-- **Contributing Section:** Adding a standard way to report issues via GitHub Issues.
+---
+
+### Bengali Section:
+#### 🛠 পিন বা ২এফএ (2FA) ভুলে গেছেন? (অ্যাকাউন্ট রিকভারি)
+আপনি যদি আপনার অ্যাকাউন্টে প্রবেশ করতে না পারেন, তবে নিচের সহজ ধাপগুলো অনুসরণ করুন:
+
+১. **চ্যালেঞ্জ কোড তৈরি:** অ্যাপের লক স্ক্রিনে গিয়ে **'ডেভেলপার রেসকিউ'** বাটনে ক্লিক করুন। আপনি একটি ইউনিক **চ্যালেঞ্জ কোড** দেখতে পাবেন (যেমন: `CHL-XXXX-XXXX`) ।
+২. **যোগাযোগ করুন:** এই কোডটি ডেভেলপারকে [ইমেইল](mailto:ambia.inbox@gmail.com) বা [হোয়াটসঅ্যাপের](https://wa.me/tufaful) মাধ্যমে পাঠান।
+৩. **টোকেন তৈরি:** ডেভেলপার তার অফিশিয়াল **ডেভেলপার রিকভারি টুল (`developer_recovery.html`)** ব্যবহার করে আপনার জন্য একটি ওয়ান-টাইম **রেসকিউ টোকেন** তৈরি করবেন।
+৪. **অ্যাক্সেস পুনরুদ্ধার:** প্রাপ্ত টোকেনটি আপনার অ্যাপে দিলেই সিকিউরিটি রিসেট হয়ে যাবে এবং আপনি সাথে সাথে অ্যাকাউন্টে প্রবেশ করতে পারবেন।
 
 ## 3. Implementation Steps
-1.  Read current `README.md` to preserve existing descriptions.
-2.  Draft the new structure in English.
-3.  Translate and draft the new structure in Bengali.
-4.  Update the `README.md` file with the final content.
+1.  Update the **Table of Contents** with a link to the Recovery section.
+2.  Update the **Key Features** list with the recovery bullet point.
+3.  Append the visually structured **Recovery Guide** at the end of the Support sections in both languages.

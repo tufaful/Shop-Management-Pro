@@ -15,6 +15,7 @@
 - [📥 Installation Guide](#-installation-guide)
 - [📖 Usage & Shortcuts](#-usage--shortcuts)
 - [🤝 Contributing & Support](#-contributing--support)
+- [🛠 Account Recovery](#-lost-pin-or-2fa-account-recovery)
 - [🛡 License](#-license)
 
 ---
@@ -52,6 +53,7 @@ Access the full application directly in your browser:
 - **Offline-First:** All data stored locally in IndexedDB.
 - **Safe Backups:** Export data as JSON, encrypted files, or modular snapshots.
 - **Access Control:** Secure with PIN, Pattern locks, and 2FA.
+- **Emergency Account Recovery:** Never get locked out of your data with our built-in challenge-response mechanism.
 
 ## 🛠 Technical Stack
 - **Frontend:** Vanilla TypeScript, Tailwind CSS (Styling).
@@ -81,6 +83,15 @@ Contributions are welcome! If you find a bug or have a feature request:
 2. Fork the repository and submit a **Pull Request**.
 3. Join the discussion for new features.
 
+### 🛠 Lost PIN or 2FA? (Account Recovery)
+If you are locked out of your account, follow these simple steps:
+
+1.  **Generate Challenge:** On the app's lock screen, click on **Developer Rescue**. You will see a unique **Challenge Code** (e.g., `CHL-XXXX-XXXX`).
+2.  **Contact Support:** Send this code to the developer via [Email](mailto:ambia.inbox@gmail.com) or [WhatsApp](https://wa.me/tufaful).
+3.  **Token Generation:** The developer will use the official **Developer Recovery Tool (`developer_recovery.html`)** to generate a secure **Rescue Token** for you.
+4.  **Regain Access:** Enter the provided token into your app to reset your security credentials and log in instantly.
+
+
 ## 🛡 License
 Distributed under the **MIT License**. See `LICENSE` for more information.
 
@@ -101,6 +112,7 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 - [📥 ইনস্টলেশন গাইড](#-ইনস্টলেশন-গাইড)
 - [📖 শর্টকাট সমূহ](#-শর্টকাট-সমূহ)
 - [🤝 কন্ট্রিবিউশন ও সাপোর্ট](#-কন্ট্রিবিউশন-ও-সাপোর্ট)
+- [🛠 অ্যাকাউন্ট রিকভারি](#-পিন-বা-২এফএ-2fa-ভুলে-গেছেন-অ্যাকাউন্ট-রিকভারি)
 - [🛡 লাইসেন্স](#-লাইসেন্স)
 
 ---
@@ -138,6 +150,7 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 - **অফলাইন-ফার্স্ট:** সমস্ত ডাটা ব্রাউজারের IndexedDB-তে জমা থাকে।
 - **নিরাপদ ব্যাকআপ:** JSON, এনক্রিপ্টেড ফাইল বা স্ন্যাপশট হিসেবে ডাটা এক্সপোর্ট।
 - **অ্যাক্সেস কন্ট্রোল:** পিন (PIN), প্যাটার্ন লক এবং ২এফএ (2FA) সিকিউরিটি।
+- **ইমার্জেন্সি অ্যাকাউন্ট রিকভারি:** চ্যালেঞ্জ-রেসপন্স মেকানিজমের মাধ্যমে আপনার ডাটা সব সময় সুরক্ষিত এবং পুনরুদ্ধারযোগ্য।
 
 ## 🛠 টেকনিক্যাল স্ট্যাক
 - **ফ্রন্টএন্ড:** ভ্যানিলা টাইপস্ক্রিপ্ট, টেলউইন্ড সিএসএস।
@@ -164,6 +177,15 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 যেকোনো ধরনের বাগ রিপোর্ট বা ফিচারের জন্য:
 ১. একটি **[Issue](https://github.com/tufaful/Shop-Management-Pro/issues)** খুলুন।
 ২. রিপোজিটরি ফর্ক করুন এবং **Pull Request** পাঠান।
+
+### 🛠 পিন বা ২এফএ (2FA) ভুলে গেছেন? (অ্যাকাউন্ট রিকভারি)
+আপনি যদি আপনার অ্যাকাউন্টে প্রবেশ করতে না পারেন, তবে নিচের সহজ ধাপগুলো অনুসরণ করুন:
+
+১. **চ্যালেঞ্জ কোড তৈরি:** অ্যাপের লক স্ক্রিনে গিয়ে **'ডেভেলপার রেসকিউ'** বাটনে ক্লিক করুন। আপনি একটি ইউনিক **চ্যালেঞ্জ কোড** দেখতে পাবেন (যেমন: `CHL-XXXX-XXXX`) ।
+২. **যোগাযোগ করুন:** এই কোডটি ডেভেলপারকে [ইমেইল](mailto:ambia.inbox@gmail.com) বা [হোয়াটসঅ্যাপের](https://wa.me/tufaful) মাধ্যমে পাঠান।
+৩. **টোকেন তৈরি:** ডেভেলপার তার অফিশিয়াল **ডেভেলপার রিকভারি টুল (`developer_recovery.html`)** ব্যবহার করে আপনার জন্য একটি ওয়ান-টাইম **রেসকিউ টোকেন** তৈরি করবেন।
+৪. **অ্যাক্সেস পুনরুদ্ধার:** প্রাপ্ত টোকেনটি আপনার অ্যাপে দিলেই সিকিউরিটি রিসেট হয়ে যাবে এবং আপনি সাথে সাথে অ্যাকাউন্টে প্রবেশ করতে পারবেন।
+
 
 ## 🛡 লাইসেন্স
 এটি **MIT লাইসেন্স** এর অধীনে প্রকাশিত।

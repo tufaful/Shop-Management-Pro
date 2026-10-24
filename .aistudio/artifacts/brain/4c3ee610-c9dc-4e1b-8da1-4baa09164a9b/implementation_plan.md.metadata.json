@@ -1,6 +1,0 @@
-{
-  "summary":  "Implementation plan to prevent direct stock tampering in Product Edit modal and safeguard inventory audit trail with read-only stock display and direct Stock Adjustment voucher integration.",
-  "updatedAt":  "2026-10-22T10:01:10.721118566Z",
-  "requestFeedback":  true,
-  "userFacing":  true
-}

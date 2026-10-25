@@ -3,7 +3,7 @@
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet" />
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -308,13 +308,47 @@ body {
     flex: 1 1 200px !important;
   }
 
-  /* Header Compactness */
+  /* Header Compactness & Responsive Brand */
   .app-header {
-    padding: 8px 12px !important;
+    padding: 6px 12px !important;
   }
 
-  .header-brand-title {
-    font-size: 14px !important;
+  .smp-header-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border-color);
+    padding: 4px 10px 4px 5px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    max-width: 100%;
+    overflow: hidden;
+    user-select: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .smp-header-brand:hover {
+    border-color: var(--primary);
+    background: var(--bg-surface);
+  }
+  .smp-header-text-desktop {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+  .smp-header-text-mobile {
+    display: none;
+  }
+  @media (max-width: 640px) {
+    .smp-header-text-desktop { display: none !important; }
+    .smp-header-text-mobile { display: flex !important; }
+    .smp-header-brand {
+      padding: 3px 8px 3px 4px !important;
+      gap: 6px !important;
+      border-radius: 8px !important;
+      max-width: calc(100vw - 160px) !important;
+    }
   }
 
   /* Responsive Mobile Cards */
@@ -2435,16 +2469,128 @@ body {
       }
     });
   </script>
+
+<style>
+  #drawerBackdrop {
+    background: rgba(0, 0, 0, 0.45) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+  }
+  #leftDrawer {
+    background: var(--bg-surface) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-right: 1px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+  }
+  #leftDrawer .more-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+  }
+  #leftDrawer .more-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    gap: 10px !important;
+    padding: 6px 10px !important;
+    border-radius: 8px !important;
+    background: var(--bg-surface-alt) !important;
+    border: 1px solid var(--border-color) !important;
+    transition: all 0.15s ease !important;
+  }
+  #leftDrawer .more-item:hover {
+    background: rgba(37, 99, 235, 0.08) !important;
+    border-color: var(--primary) !important;
+    transform: translateX(3px) !important;
+  }
+  #leftDrawer .more-item-icon {
+    font-size: 15px !important;
+    width: 28px !important;
+    height: 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: var(--bg-surface) !important;
+    border-radius: 6px !important;
+    border: 1px solid var(--border-color) !important;
+    flex-shrink: 0 !important;
+  }
+  #leftDrawer .more-item-label {
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    color: var(--text-main) !important;
+    text-align: left !important;
+    flex: 1 !important;
+  }
+  #leftDrawer .more-menu-section {
+    margin-bottom: 12px !important;
+  }
+  #leftDrawer .more-menu-section h3 {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    color: var(--text-muted) !important;
+    text-transform: uppercase !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    padding-bottom: 4px !important;
+    margin-bottom: 8px !important;
+  }
+</style>
 </head>
 <body>
+  <!-- Left Slide-Out Drawer & Backdrop -->
+  <div id="drawerBackdrop" onclick="App.closeLeftDrawer()" style="position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:99999; opacity:0; pointer-events:none; transition:opacity 0.3s ease;"></div>
+  <div id="leftDrawer" style="position:fixed; top:0; left:0; bottom:0; width:100%; max-width:360px; background:var(--bg-surface); z-index:100000; box-shadow:4px 0 24px rgba(0,0,0,0.18); transform:translateX(-100%); transition:transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); display:flex; flex-direction:column; overflow:hidden;">
+    <div style="padding:12px 16px; border-bottom:1px solid var(--border-color); display:flex; align-items:center; justify-content:space-between; background:var(--bg-surface-alt);">
+      <div style="display:flex; align-items:center; gap:10px; min-width:0; cursor:pointer;" onclick="App.navigate('dashboard'); App.closeLeftDrawer();">
+        <div id="drawerShopLogo" style="background:var(--primary); color:#fff; border-radius:6px; flex-shrink:0; display:flex; align-items:center; justify-content:center; width:34px; height:34px; font-size:13px; font-weight:800;">SMP</div>
+        <div style="display:flex; flex-direction:column; min-width:0;">
+          <h3 id="drawerShopName" style="font-size:14px; font-weight:700; margin:0; color:var(--text-main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Store Management Pro</h3>
+          <span style="font-size:10.5px; color:var(--text-muted);">Navigation & Features</span>
+        </div>
+      </div>
+      <button class="icon-btn" onclick="App.closeLeftDrawer()" style="width:34px; height:34px; border-radius:8px; font-size:16px; cursor:pointer;" title="Close Menu">✕</button>
+    </div>
+    <div id="leftDrawerContent" style="flex:1; overflow-y:auto; padding:0;" onclick="App.handleDrawerItemClick(event)"></div>
+  </div>
+
 
   <!-- Top App Header -->
   <header class="app-header" style="position:relative;">
-    <div class="header-brand" onclick="App.navigate('dashboard')">
-      <div class="header-logo" id="headerLogo">SMP</div>
-      <div class="header-title-box">
-        <span class="header-title" id="headerShopName">Store Management Pro</span>
-        <span class="header-sub" id="headerSubtitle" data-i18n="shop_sub">দোকান নং ১২, নিউ মার্কেট, ঢাকা</span>
+    <button class="icon-btn header-hamburger-btn" onclick="event.stopPropagation(); App.openLeftDrawer()" title="Open Navigation Menu" aria-label="Open Navigation Menu" style="margin-right: 10px; font-size: 20px; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 10px; background: var(--bg-surface-alt); border: 1px solid var(--border-color); color: var(--text-main); cursor: pointer;">☰</button>
+    <div class="header-brand" onclick="App.navigate('dashboard')" title="Shop Management Pro Dashboard">
+      <div class="smp-header-brand">
+        <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0; filter:drop-shadow(0 2px 5px rgba(37,99,235,0.38));">
+          <defs>
+            <linearGradient id="smpLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#2563eb"/>
+              <stop offset="50%" stop-color="#3b82f6"/>
+              <stop offset="100%" stop-color="#1d4ed8"/>
+            </linearGradient>
+            <linearGradient id="smpGlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <rect width="40" height="40" rx="11" fill="url(#smpLogoGrad)"/>
+          <rect width="40" height="20" rx="11" fill="url(#smpGlowGrad)"/>
+          <path d="M20 7L32 13.5V26.5L20 33L8 26.5V13.5L20 7Z" stroke="#ffffff" stroke-dasharray="2 2" stroke-width="1.2" stroke-opacity="0.35" fill="none"/>
+          <text x="20" y="24.5" font-family="'Plus Jakarta Sans', 'Outfit', 'Inter', sans-serif" font-size="13" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1">SMP</text>
+        </svg>
+
+        <!-- Mobile Compact View -->
+        <div class="smp-header-text-mobile">
+          <span style="font-family:'Plus Jakarta Sans', 'Outfit', sans-serif; font-size:13px; font-weight:800; color:var(--text-main); white-space:nowrap;">SMP Pro</span>
+        </div>
+
+        <!-- Desktop Full View -->
+        <div class="smp-header-text-desktop">
+          <span style="font-family:'Plus Jakarta Sans', 'Outfit', sans-serif; font-size:14px; font-weight:800; letter-spacing:-0.2px; background:linear-gradient(135deg, var(--text-main) 30%, var(--primary) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; white-space:nowrap;">Shop Management Pro</span>
+          <span style="font-family:'Inter', system-ui, sans-serif; font-size:9px; font-weight:700; color:var(--primary); letter-spacing:0.8px; text-transform:uppercase; margin-top:1px; white-space:nowrap;">Enterprise Retail System</span>
+        </div>
       </div>
     </div>
 
@@ -2631,7 +2777,7 @@ body {
 
     <!-- Permanently Pinned All Features Button -->
     <div class="nav-pinned-more">
-      <button type="button" class="nav-pinned-btn" id="navPinnedMoreBtn" onclick="App.navigate('more')" title="All Features & Modules (Alt+M)" data-i18n-title="nav_more_title">
+      <button type="button" class="nav-pinned-btn" id="navPinnedMoreBtn" onclick="App.openLeftDrawer()" title="All Features & Modules (Alt+M)" data-i18n-title="nav_more_title">
         <span style="font-size:14px; line-height:1;">⊞</span>
         <span id="navPinnedMoreLabel" data-i18n="nav_all_features">All Features</span>
         <span class="nav-pinned-kbd">Alt+M</span>
@@ -2661,10 +2807,7 @@ body {
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
       <span data-i18n="due_mgmt">Due Book</span>
     </div>
-    <div class="mobile-nav-item" id="mobNavMore" onclick="App.navigate('more')">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
-      <span data-i18n="nav_more">Menu</span>
-    </div>
+
   </div>
 
   <!-- Global Modal Container -->
@@ -2706,14 +2849,14 @@ body {
       console.error("Global Error Caught:", e.error || e.message);
       if (typeof showToast === 'function') {
         const errMsg = e && e.message ? e.message : "Runtime Error";
-        showToast("সিস্টেম ত্রুটি: " + errMsg, "danger");
+        showToast(_txt("System Error: " + errMsg, "সিস্টেম ত্রুটি: " + errMsg), "danger");
       }
     });
     window.addEventListener('unhandledrejection', function(e) {
       console.error("Unhandled Rejection Caught:", e.reason);
       const msg = e.reason ? (e.reason.message || String(e.reason)) : "Unknown Promise Error";
       if (typeof showToast === 'function') {
-        showToast("অপ্রত্যাশিত প্রমিস ত্রুটি: " + msg, "danger");
+        showToast(_txt("Unexpected Promise Error: " + msg, "অপ্রত্যাশিত প্রমিস ত্রুটি: " + msg), "danger");
       }
     });
 
@@ -3059,7 +3202,7 @@ body {
         if (window.App) window.App.db = dbInstance;
         setTimeout(() => {
           if (typeof showToast === "function") {
-            showToast("সতর্কতা: ব্রাউজার IndexedDB সাময়িকভাবে অনুপলব্ধ, ফলব্যাক লোকালস্টোরেজ মোড সক্রিয় হয়েছে।", "warning");
+            showToast(_txt("Warning: IndexedDB unavailable. Fallback LocalStorage mode active.", "সতর্কতা: ব্রাউজার IndexedDB সাময়িকভাবে অনুপলব্ধ, ফলব্যাক লোকালস্টোরেজ মোড সক্রিয় হয়েছে।"), "warning");
           }
         }, 1200);
         return dbInstance;
@@ -16744,7 +16887,7 @@ async function renderReports(container) {
             <button class="btn btn-sm btn-outline" onclick="App.openSwitchUserModal()" title="${isBn ? 'ইউজার পরিবর্তন' : 'Switch User'}" style="font-weight:700;">
               🔄 ${isBn ? "ইউজার সুইচ" : "Switch"}
             </button>
-            <button class="btn btn-sm btn-outline" onclick="App.navigate('more')" title="${isBn ? 'মেনু' : 'More'}" style="font-weight:700;">
+            <button class="btn btn-sm btn-outline" onclick="App.openLeftDrawer()" title="${isBn ? 'মেনু' : 'More'}" style="font-weight:700;">
               ◀ ${isBn ? "মেনু" : "Menu"}
             </button>
           </div>
@@ -17100,7 +17243,52 @@ async function renderReports(container) {
   window.App.renderSecurity = renderSecurity;
 
   // VIEW 21: MORE MENU (REORGANIZED WITH REAL-TIME SEARCH & CHALLANS IN AUDIT/COMPLIANCE)
+  
+  window.App.openLeftDrawer = function() {
+    const drawer = document.getElementById("leftDrawer");
+    const backdrop = document.getElementById("drawerBackdrop");
+    if (!drawer || !backdrop) return;
+    const shopNameEl = document.getElementById("drawerShopName");
+    const shopLogoEl = document.getElementById("drawerShopLogo");
+    if (shopNameEl && window.App?.settings?.shopName) {
+      shopNameEl.textContent = window.App.settings.shopName;
+    }
+    if (shopLogoEl && window.App?.settings?.shopName) {
+      const name = window.App.settings.shopName;
+      const initials = name.split(" ").map(w => w[0]).join("").slice(0, 3).toUpperCase();
+      shopLogoEl.textContent = initials || "SMP";
+    }
+    const content = document.getElementById("leftDrawerContent");
+    if (content && (!content.innerHTML.trim() || typeof renderMoreMenu === "function")) {
+      renderMoreMenu(content);
+    }
+    backdrop.style.opacity = "1";
+    backdrop.style.pointerEvents = "auto";
+    drawer.style.transform = "translateX(0)";
+    document.body.style.overflow = "hidden";
+  };
+
+  window.App.closeLeftDrawer = function() {
+    const drawer = document.getElementById("leftDrawer");
+    const backdrop = document.getElementById("drawerBackdrop");
+    if (!drawer || !backdrop) return;
+    backdrop.style.opacity = "0";
+    backdrop.style.pointerEvents = "none";
+    drawer.style.transform = "translateX(-100%)";
+    document.body.style.overflow = "";
+  };
+
+  window.App.handleDrawerItemClick = function(e) {
+    const item = e.target.closest('.more-item');
+    if (item) {
+      setTimeout(() => {
+        window.App.closeLeftDrawer();
+      }, 50);
+    }
+  };
+
   window.App.filterMoreMenu = function(query) {
+
     const q = (query || "").trim().toLowerCase();
     const container = document.getElementById("moreMenuSectionsContainer");
     const clearBtn = document.getElementById("moreMenuSearchClearBtn");
@@ -18869,7 +19057,7 @@ async function renderReports(container) {
       };
     });
 
-    const activeTab = App.recycleBinFilterTab || "all";
+    const activeTab = (window.App && window.App.recycleBinFilterTab) || "all";
     const searchQuery = (App.recycleBinSearchQuery || "").trim().toLowerCase();
 
     // Grouping helper
@@ -22617,7 +22805,6 @@ async function renderReports(container) {
         sales: "mobNavSales",
         products: "mobNavProducts",
         due: "mobNavDue",
-        more: "mobNavMore"
       };
       const activeMobId = mobNavMap[view];
       if (activeMobId) {
@@ -22730,7 +22917,7 @@ async function renderReports(container) {
           await renderSecurity(container);
           break;
         case "more":
-          await renderMoreMenu(container);
+          this.openLeftDrawer();
           break;
         case "developer":
         case "developer_info":
@@ -23250,14 +23437,14 @@ async function renderReports(container) {
       this.guardAction("security.recycle_bin_restore", isBn ? "রিসাইকেল বিন থেকে রেকর্ড রিস্টোর" : "Restore from Recycle Bin", async () => {
         const binItem = await dbGet("recycleBin", binId);
         if (!binItem) {
-          showToast("রিসাইকেল বিনে আইটেম পাওয়া যায়নি", "warning");
+          showToast(_txt("Item not found in Recycle Bin", "রিসাইকেল বিনে আইটেম পাওয়া যায়নি"), "warning");
           return;
         }
 
         const storeName = binItem.originalStore;
         const originalData = binItem.data;
         if (!storeName || !originalData) {
-          showToast("ত্রুটি: মূল তথ্য পাওয়া যায়নি", "danger");
+          showToast(_txt("Error: Original data not found", "ত্রুটি: মূল তথ্য পাওয়া যায়নি"), "danger");
           return;
         }
 
@@ -23598,7 +23785,7 @@ async function renderReports(container) {
       this.guardAction("security.recycle_bin_restore", isBn ? "রিসাইকেল বিনের সব রিস্টোর" : "Restore All from Recycle Bin", async () => {
         const all = await dbGetAll("recycleBin");
         if (!all || all.length === 0) {
-          showToast("রিসাইকেল বিন খালি!", "info");
+          showToast(_txt("Recycle Bin is empty!", "রিসাইকেল বিন খালি!"), "info");
           return;
         }
         const ok = await App.confirmAction({
@@ -23687,7 +23874,7 @@ async function renderReports(container) {
       this.guardAction("security.recycle_bin_restore", isBn ? "রিসাইকেল বিন সম্পূর্ণ খালি করা" : "Empty Recycle Bin", async () => {
         const all = await dbGetAll("recycleBin");
         if (!all || all.length === 0) {
-          showToast("রিসাইকেল বিন ইতিমধ্যেই খালি!", "info");
+          showToast(_txt("Recycle Bin is already empty!", "রিসাইকেল বিন ইতিমধ্যেই খালি!"), "info");
           return;
         }
         const ok = await App.confirmAction({
@@ -23714,7 +23901,7 @@ async function renderReports(container) {
         await logAudit("Recycle Bin Emptied", "All", `Purged all ${all.length} items permanently`);
         await this.updateRecycleBinBadge();
 
-        showToast("রিসাইকেল বিন সম্পূর্ণ খালি করা হয়েছে", "success");
+        showToast(_txt("Recycle Bin cleared completely", "রিসাইকেল বিন সম্পূর্ণ খালি করা হয়েছে"), "success");
         if (this.currentView === "recycle_bin" || this.currentView === "recyclebin") {
           renderRecycleBin(document.getElementById("viewContainer"));
         }
@@ -25040,7 +25227,7 @@ async function renderReports(container) {
     // CANONICAL HOLD CART SYSTEM
     holdCurrentCart() {
       if (this.cart.length === 0) {
-        showToast("হোল্ড করার মতো কোনো পণ্য কার্টে নেই", "warning");
+        showToast(_txt("No items in cart to hold", "হোল্ড করার মতো কোনো পণ্য কার্টে নেই"), "warning");
         return;
       }
       this.openHoldCartModal();
@@ -25094,7 +25281,7 @@ async function renderReports(container) {
       this.posCustomer = "";
 
       this.closeModal();
-      showToast("কার্ট সফলভাবে হোল্ড করা হয়েছে!", "success");
+      showToast(_txt("Cart held successfully!", "কার্ট সফলভাবে হোল্ড করা হয়েছে!"), "success");
       this.navigate("sales");
     },
 
@@ -25164,7 +25351,7 @@ async function renderReports(container) {
       await logAudit("Held Cart Resumed", id, "Restored back to POS");
 
       this.closeModal();
-      showToast("🎉 হোল্ড কার্ট রিস্টোর করা হয়েছে!", "success");
+      showToast(_txt("🎉 Held cart restored!", "🎉 হোল্ড কার্ট রিস্টোর করা হয়েছে!"), "success");
       this.navigate("sales");
     },
 
@@ -25225,21 +25412,21 @@ async function renderReports(container) {
     async saveHeldCartNote(id) {
       const inputEl = document.getElementById("editHeldCartNoteInput");
       const note = inputEl ? inputEl.value.trim() : "";
-      if (!note) return showToast("দয়া করে একটি নোট লিখুন", "warning");
+      if (!note) return showToast(_txt("Please write a note", "দয়া করে একটি নোট লিখুন"), "warning");
 
       const hc = await dbGet("heldCarts", id);
       if (!hc) return;
 
       hc.note = note;
       await dbPut("heldCarts", hc);
-      showToast("🎉 নোট সফলভাবে আপডেট করা হয়েছে!", "success");
+      showToast(_txt("🎉 Note updated successfully!", "🎉 নোট সফলভাবে আপডেট করা হয়েছে!"), "success");
       await this.openHoldCartsModal();
     },
 
     // COMPLETE SALE
     async completeSale() {
       if (this.cart.length === 0) {
-        showToast("কার্ট খালি! কোনো পণ্য যোগ করুন।", "warning");
+        showToast(_txt("Cart is empty! Add products to proceed.", "কার্ট খালি! কোনো পণ্য যোগ করুন।"), "warning");
         return;
       }
 
@@ -25552,7 +25739,7 @@ async function renderReports(container) {
             { invoiceNo, grandTotal, paid, due, customerName }
           );
         }
-        showToast("🎉 বিক্রি সফলভাবে সম্পন্ন হয়েছে!", "success");
+        showToast(_txt("🎉 Sale completed successfully!", "🎉 বিক্রি সফলভাবে সম্পন্ন হয়েছে!"), "success");
 
         this.viewInvoiceByNo(invoiceNo);
 
@@ -25797,7 +25984,7 @@ async function renderReports(container) {
       const isoTimestamp = dtInput ? new Date(dtInput).toISOString() : new Date().toISOString();
 
       if (!custId || amt <= 0) {
-        showToast("সঠিক কাস্টমার ও আদায়ের পরিমাণ লিখুন", "warning");
+        showToast(_txt("Please enter valid customer and collected amount", "সঠিক কাস্টমার ও আদায়ের পরিমাণ লিখুন"), "warning");
         return;
       }
 
@@ -25868,7 +26055,7 @@ async function renderReports(container) {
       if (calculatedNewDue < 0) {
         showToast(`বকেয়া পরিশোধ সম্পন্ন এবং অতিরিক্ত ৳${formatMoney(Math.abs(calculatedNewDue))} কাস্টমারের অগ্রিম জমা (Advance Credit) হিসেবে সংরক্ষিত হয়েছে!`, "success");
       } else {
-        showToast("বাকি আদায় সফলভাবে সংরক্ষিত হয়েছে!", "success");
+        showToast(_txt("Due collection saved successfully!", "বাকি আদায় সফলভাবে সংরক্ষিত হয়েছে!"), "success");
       }
       if (this.currentView === "due") renderDueManagement(document.getElementById("viewContainer"));
       else if (this.currentView === "customers") renderCustomers(document.getElementById("viewContainer"));
@@ -25981,7 +26168,7 @@ async function renderReports(container) {
       }
 
       if (!suppId || amt <= 0) {
-        showToast("সঠিক সাপ্লায়ার ও পরিশোধের পরিমাণ লিখুন", "warning");
+        showToast(_txt("Please enter valid supplier and payment amount", "সঠিক সাপ্লায়ার ও পরিশোধের পরিমাণ লিখুন"), "warning");
         return;
       }
 

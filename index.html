@@ -181,6 +181,37 @@ body {
   padding-bottom: env(safe-area-inset-bottom, 60px);
 }
 
+/* Header Brand & Logo Styles (Desktop, Tablet, Mobile) */
+.smp-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  padding: 4px 12px 4px 5px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  max-width: 100%;
+  overflow: hidden;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.smp-header-brand:hover {
+  border-color: var(--primary);
+  background: var(--bg-surface);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.12);
+}
+.smp-header-text-desktop {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.15;
+}
+.smp-header-text-mobile {
+  display: none !important;
+}
+
 /* Form Controls, Bottom Sheets & Touch Targets on Mobile (Excluding Print Preview) */
 @media (max-width: 768px) {
   body {
@@ -312,37 +343,9 @@ body {
   .app-header {
     padding: 6px 12px !important;
   }
-
-  .smp-header-brand {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--bg-surface-alt);
-    border: 1px solid var(--border-color);
-    padding: 4px 10px 4px 5px;
-    border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    max-width: 100%;
-    overflow: hidden;
-    user-select: none;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-  .smp-header-brand:hover {
-    border-color: var(--primary);
-    background: var(--bg-surface);
-  }
-  .smp-header-text-desktop {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.15;
-  }
-  .smp-header-text-mobile {
-    display: none;
-  }
   @media (max-width: 640px) {
     .smp-header-text-desktop { display: none !important; }
-    .smp-header-text-mobile { display: flex !important; }
+    .smp-header-text-mobile { display: flex !important; align-items: center; }
     .smp-header-brand {
       padding: 3px 8px 3px 4px !important;
       gap: 6px !important;
@@ -492,8 +495,10 @@ body {
     justify-content: center !important;
     padding: 0 !important;
     background: rgba(15, 23, 42, 0.72) !important;
-    -webkit-backdrop-filter: blur(4px) !important;
-    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .modal-overlay:not(#printPreviewModalOverlay):not(.print-preview-overlay):not(.has-print-preview) .modal-card:not(.print-preview-modal-dialog),
@@ -1164,7 +1169,9 @@ body {
       padding: 12px 16px !important;
       box-shadow: 0 8px 24px rgba(5, 150, 105, 0.4) !important;
       border: 1px solid rgba(255, 255, 255, 0.2) !important;
-      backdrop-filter: blur(8px) !important;
+      backdrop-filter: blur(8px);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
       animation: cartBumpPulse 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
     .pos-item-card {
@@ -2473,13 +2480,13 @@ body {
 <style>
   #drawerBackdrop {
     background: rgba(0, 0, 0, 0.45) !important;
-    backdrop-filter: blur(4px) !important;
-    -webkit-backdrop-filter: blur(4px) !important;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   #leftDrawer {
     background: var(--bg-surface) !important;
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     border-right: 1px solid var(--border-color) !important;
     color: var(--text-main) !important;
   }
@@ -2560,36 +2567,39 @@ body {
 
   <!-- Top App Header -->
   <header class="app-header" style="position:relative;">
-    <button class="icon-btn header-hamburger-btn" onclick="event.stopPropagation(); App.openLeftDrawer()" title="Open Navigation Menu" aria-label="Open Navigation Menu" style="margin-right: 10px; font-size: 20px; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 10px; background: var(--bg-surface-alt); border: 1px solid var(--border-color); color: var(--text-main); cursor: pointer;">☰</button>
-    <div class="header-brand" onclick="App.navigate('dashboard')" title="Shop Management Pro Dashboard">
-      <div class="smp-header-brand">
-        <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0; filter:drop-shadow(0 2px 5px rgba(37,99,235,0.38));">
-          <defs>
-            <linearGradient id="smpLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#2563eb"/>
-              <stop offset="50%" stop-color="#3b82f6"/>
-              <stop offset="100%" stop-color="#1d4ed8"/>
-            </linearGradient>
-            <linearGradient id="smpGlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
-              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <rect width="40" height="40" rx="11" fill="url(#smpLogoGrad)"/>
-          <rect width="40" height="20" rx="11" fill="url(#smpGlowGrad)"/>
-          <path d="M20 7L32 13.5V26.5L20 33L8 26.5V13.5L20 7Z" stroke="#ffffff" stroke-dasharray="2 2" stroke-width="1.2" stroke-opacity="0.35" fill="none"/>
-          <text x="20" y="24.5" font-family="'Plus Jakarta Sans', 'Outfit', 'Inter', sans-serif" font-size="13" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1">SMP</text>
-        </svg>
+    <div class="header-brand-wrap" style="display:flex; align-items:center; gap:10px; min-width:0;">
+      <button class="icon-btn header-hamburger-btn" onclick="event.stopPropagation(); App.openLeftDrawer()" title="Open Navigation Menu" aria-label="Open Navigation Menu" style="font-size: 20px; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 10px; background: var(--bg-surface-alt); border: 1px solid var(--border-color); color: var(--text-main); cursor: pointer; flex-shrink: 0;">☰</button>
+      <div class="header-brand" onclick="App.navigate('dashboard')" title="Shop Management Pro Dashboard" style="cursor:pointer; user-select:none; display:flex; align-items:center; min-width:0;">
+        <div class="smp-header-brand">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0; filter:drop-shadow(0 2px 6px rgba(37,99,235,0.28));">
+            <defs>
+              <linearGradient id="smpLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1d4ed8"/>
+                <stop offset="50%" stop-color="#2563eb"/>
+                <stop offset="100%" stop-color="#3b82f6"/>
+              </linearGradient>
+              <linearGradient id="smpGlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.32"/>
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02"/>
+              </linearGradient>
+            </defs>
+            <rect width="40" height="40" rx="10" fill="url(#smpLogoGrad)"/>
+            <rect width="40" height="20" rx="10" fill="url(#smpGlowGrad)"/>
+            <path d="M20 6.5L33 13.8V26.2L20 33.5L7 26.2V13.8L20 6.5Z" stroke="#ffffff" stroke-dasharray="2 2" stroke-width="1.2" stroke-opacity="0.35" fill="none"/>
+            <circle cx="20" cy="6.5" r="1.5" fill="#ffffff" fill-opacity="0.85"/>
+            <text x="20" y="24.5" font-family="'Plus Jakarta Sans', 'Outfit', 'Inter', system-ui, sans-serif" font-size="13.5" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1">SMP</text>
+          </svg>
 
-        <!-- Mobile Compact View -->
-        <div class="smp-header-text-mobile">
-          <span style="font-family:'Plus Jakarta Sans', 'Outfit', sans-serif; font-size:13px; font-weight:800; color:var(--text-main); white-space:nowrap;">SMP Pro</span>
-        </div>
+          <!-- Mobile Compact View -->
+          <div class="smp-header-text-mobile">
+            <span style="font-family:'Plus Jakarta Sans', 'Outfit', 'Inter', system-ui, sans-serif; font-size:13.5px; font-weight:800; color:var(--text-main); white-space:nowrap;">SMP Pro</span>
+          </div>
 
-        <!-- Desktop Full View -->
-        <div class="smp-header-text-desktop">
-          <span style="font-family:'Plus Jakarta Sans', 'Outfit', sans-serif; font-size:14px; font-weight:800; letter-spacing:-0.2px; background:linear-gradient(135deg, var(--text-main) 30%, var(--primary) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; white-space:nowrap;">Shop Management Pro</span>
-          <span style="font-family:'Inter', system-ui, sans-serif; font-size:9px; font-weight:700; color:var(--primary); letter-spacing:0.8px; text-transform:uppercase; margin-top:1px; white-space:nowrap;">Enterprise Retail System</span>
+          <!-- Desktop Full View -->
+          <div class="smp-header-text-desktop">
+            <span style="font-family:'Plus Jakarta Sans', 'Outfit', 'Inter', system-ui, sans-serif; font-size:15px; font-weight:800; letter-spacing:-0.25px; color:var(--text-main); white-space:nowrap; line-height:1.2;">Shop Management Pro</span>
+            <span style="font-family:'Inter', system-ui, -apple-system, sans-serif; font-size:10px; font-weight:700; color:var(--primary); letter-spacing:0.6px; text-transform:uppercase; margin-top:1px; white-space:nowrap; line-height:1;">Retail POS &amp; Inventory System</span>
+          </div>
         </div>
       </div>
     </div>

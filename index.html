@@ -3662,7 +3662,7 @@ body {
           return Promise.resolve(item);
         },
         delete: (key) => {
-          const list = getFallbackStore(storeName).filter(i => String(i.id) !== String(key));
+          const list = getFallbackStore(storeName).filter(i => String(i && i.id) !== String(key) && String(i && i.invoiceNo) !== String(key));
           saveFallbackStore(storeName, list);
           return Promise.resolve(true);
         },
@@ -3720,7 +3720,13 @@ body {
             }),
             delete: (key) => new Promise((res, rej) => {
               const req = store.delete(key);
-              req.onsuccess = () => res(true);
+              req.onsuccess = () => {
+                try {
+                  const list = getFallbackStore(storeName).filter(i => String(i && i.id) !== String(key) && String(i && i.invoiceNo) !== String(key));
+                  saveFallbackStore(storeName, list);
+                } catch (e) {}
+                res(true);
+              };
               req.onerror = () => rej(req.error);
             }),
             clear: () => new Promise((res, rej) => {
@@ -3764,7 +3770,7 @@ body {
             return Promise.resolve(item);
           },
           delete: (key) => {
-            const list = getFallbackStore(storeName).filter(i => String(i.id) !== String(key));
+            const list = getFallbackStore(storeName).filter(i => String(i && i.id) !== String(key) && String(i && i.invoiceNo) !== String(key));
             saveFallbackStore(storeName, list);
             return Promise.resolve(true);
           },
@@ -3860,7 +3866,7 @@ body {
   }
 
   async function dbDelete(store, key) {
-    const fallbackList = getFallbackStore(store).filter(i => String(i.id) !== String(key));
+    const fallbackList = getFallbackStore(store).filter(i => String(i && i.id) !== String(key) && String(i && i.invoiceNo) !== String(key));
     saveFallbackStore(store, fallbackList);
 
     if (store === "recycleBin") {
@@ -40839,117 +40845,195 @@ async function renderReports(container) {
         showToast(_txt("Error! Failed to update invoice.", "ভুল হয়েছে! চালান আপডেট করা যায়নি।"), "error");
       }
     };
-window.App.deleteSale = async function(invoiceNo) {
-      const isBn = ((window.App?.currentLang || this.currentLang || "en") === "bn");
-      this.guardAction("sales.delete_invoice", isBn ? "বিক্রয় চালান মুছে ফেলা (Delete Sale Invoice)" : "Delete Sale Invoice", async () => {
+    window.App.deleteSale = async function(invoiceNo) {
+      const isBn = ((window.App?.currentLang || this.currentLang || (typeof getAppLang === "function" ? getAppLang() : "en")) === "bn");
+      const self = window.App || this;
+      self.guardAction("sales.delete_invoice", isBn ? "বিক্রয় চালান মুছে ফেলা (Delete Sale Invoice)" : "Delete Sale Invoice", async () => {
         if (isPinActive()) {
           const pinOk = await window.App.requestPinUnlock(
-            "বিক্রয় ডিলিট নিরাপত্তা",
-            "বিক্রয় চালানটি ডাটাবেজ থেকে মুছে ফেলার আগে আপনার নিরাপত্তা পাসওয়ার্ড দিন:"
+            isBn ? "বিক্রয় ডিলিট নিরাপত্তা" : "Sale Delete Security",
+            isBn ? "বিক্রয় চালানটি ডাটাবেজ থেকে মুছে ফেলার আগে আপনার নিরাপত্তা পাসওয়ার্ড দিন:" : "Enter your security password before deleting this sales invoice:"
           );
           if (!pinOk) return;
         }
-        const inv = await dbGet("invoices", invoiceNo) || (await dbGetAll("invoices")).find(i => i.invoiceNo === invoiceNo);
-        if (!inv) return showToast("বিক্রয় চালান পাওয়া যায়নি", "warning");
+
+        // 1. Comprehensive multi-store search (invoices and sales)
+        let inv = await dbGet("invoices", invoiceNo);
+        if (!inv) {
+          const allInvs = await dbGetAll("invoices") || [];
+          inv = allInvs.find(i => String(i.invoiceNo) === String(invoiceNo) || String(i.id) === String(invoiceNo));
+        }
+        if (!inv) {
+          inv = await dbGet("sales", invoiceNo);
+        }
+        if (!inv) {
+          const allSales = await dbGetAll("sales") || [];
+          inv = allSales.find(s => String(s.invoiceNo) === String(invoiceNo) || String(s.id) === String(invoiceNo));
+        }
+
+        if (!inv) {
+          return showToast(isBn ? "বিক্রয় চালান পাওয়া যায়নি" : "Sale invoice not found", "warning");
+        }
+
+        const targetInvNo = String(inv.invoiceNo || invoiceNo);
+        const targetId = String(inv.id || invoiceNo);
 
         const ok = await App.confirmAction({
-          title: "বিক্রয় চালান মুছে ফেলার নিশ্চয়তা",
-          message: `আপনি কি বিক্রয় চালান #${invoiceNo} মুছে ফেলতে চান?`,
-          details: "এটি স্মার্ট রিসাইকেল বিনে ৩০ দিন সংরক্ষিত থাকবে। চালানের পণ্যের স্টক, কাস্টমার বকেয়া এবং ব্যাংক ব্যালেন্স স্বয়ংক্রিয়ভাবে সমন্বয় হবে।",
-          confirmText: "🗑️ রিসাইকেল বিনে পাঠান",
-          cancelText: "বাতিল",
+          title: isBn ? "বিক্রয় চালান মুছে ফেলার নিশ্চয়তা" : "Confirm Delete Sale Invoice",
+          message: isBn ? `আপনি কি বিক্রয় চালান #${targetInvNo} মুছে ফেলতে চান?` : `Are you sure you want to delete sales invoice #${targetInvNo}?`,
+          details: isBn ? "এটি স্মার্ট রিসাইকেল বিনে ৩০ দিন সংরক্ষিত থাকবে। চালানের পণ্যের স্টক, কাস্টমার বকেয়া এবং ব্যাংক ব্যালেন্স স্বয়ংক্রিয়ভাবে সমন্বয় হবে।" : "This record will be kept in the Smart Recycle Bin for 30 days. Stock, customer due, and bank balances will be automatically adjusted.",
+          confirmText: isBn ? "🗑️ রিসাইকেল বিনে পাঠান" : "🗑️ Send to Recycle Bin",
+          cancelText: isBn ? "বাতিল" : "Cancel",
           danger: true,
           icon: "🧾"
         });
         if (!ok) return;
 
-        const storesList = ["sales", "invoices", "products", "stockMovements", "customers", "bankAccounts", "bankTransactions", "auditLogs", "auditLog", "recycleBin", "vat_ledger"];
+        const storesList = ["sales", "invoices", "saleItems", "products", "stockMovements", "customers", "bankAccounts", "bankTransactions", "auditLogs", "auditLog", "recycleBin", "vat_ledger"];
         const nowIso = new Date().toISOString();
 
         try {
           await dbRunTransaction(storesList, async (txStore, tx) => {
-            // 1. Revert stock
+            // 1. Revert product stock
             for (const item of (inv.items || [])) {
-              const product = await txStore("products").get(item.id || item.productId);
+              const pId = item.id || item.productId;
+              if (!pId) continue;
+              const product = await txStore("products").get(pId);
               if (product) {
                 const prevStock = parseFloat(product.currentStock) || 0;
-                const change = parseFloat(item.quantity);
-                product.currentStock = roundMoney(prevStock + change);
-                product.updatedAt = nowIso;
-                await txStore("products").put(product);
+                const change = parseFloat(item.quantity || item.qty || 0);
+                if (change > 0) {
+                  product.currentStock = roundMoney(prevStock + change);
+                  product.updatedAt = nowIso;
+                  await txStore("products").put(product);
 
-                await txStore("stockMovements").put({
-                  id: "SM-" + Date.now() + "-" + Math.random().toString(36).substr(2, 4),
-                  productId: item.id || item.productId,
-                  productName: product.name,
-                  type: "Adjustment",
-                  previousStock: prevStock,
-                  changeQty: change,
-                  newStock: product.currentStock,
-                  reason: "Deleted Sale #" + invoiceNo,
-                  referenceId: invoiceNo,
-                  date: nowIso,
-                  createdAt: nowIso
-                });
+                  await txStore("stockMovements").put({
+                    id: "SM-" + Date.now() + "-" + Math.random().toString(36).substr(2, 4),
+                    productId: pId,
+                    productName: product.name || item.name || "Item",
+                    type: "Adjustment",
+                    previousStock: prevStock,
+                    changeQty: change,
+                    newStock: product.currentStock,
+                    reason: "Deleted Sale #" + targetInvNo,
+                    referenceId: targetInvNo,
+                    date: nowIso,
+                    createdAt: nowIso
+                  });
+                }
               }
             }
 
-            // 2. Revert customer due
-            if (inv.customerId && (inv.dueAmount || inv.due) > 0) {
+            // 2. Revert customer due balance
+            if (inv.customerId && (parseFloat(inv.dueAmount || inv.due || 0) > 0)) {
               const cust = await txStore("customers").get(inv.customerId);
               if (cust) {
                 const dueAmt = parseFloat(inv.dueAmount || inv.due || 0);
                 cust.dueBalance = roundMoney(Math.max(0, (parseFloat(cust.dueBalance) || 0) - dueAmt));
+                cust.updatedAt = nowIso;
                 await txStore("customers").put(cust);
               }
             }
 
-            // 3. Revert bank balance
-            if (inv.bankAccountId && inv.bankTxId) {
+            // 3. Revert bank balance if paid via bank/digital
+            const paidRefund = parseFloat(inv.paidAmount || inv.paid || 0);
+            if (inv.bankAccountId && paidRefund > 0) {
               const account = await txStore("bankAccounts").get(inv.bankAccountId);
               if (account) {
                 const prevBal = parseFloat(account.currentBalance) || 0;
-                const refundAmt = parseFloat(inv.paidAmount || inv.paid || 0);
-                account.currentBalance = roundMoney(prevBal - refundAmt);
+                account.currentBalance = roundMoney(prevBal - paidRefund);
                 account.updatedAt = nowIso;
                 await txStore("bankAccounts").put(account);
 
                 await txStore("bankTransactions").put({
-                  id: "BT-REV-" + Date.now(),
+                  id: "BT-REV-" + Date.now() + "-" + Math.random().toString(36).substr(2, 4),
                   accountId: account.id,
                   bankName: account.bankName,
                   type: "Withdraw",
-                  amount: refundAmt,
-                  destination: "Sale Deletion Reversal #" + invoiceNo,
-                  refNo: invoiceNo,
+                  amount: paidRefund,
+                  destination: "Sale Deletion Reversal #" + targetInvNo,
+                  refNo: targetInvNo,
                   date: nowIso,
-                  description: "Refund for deleted sale #" + invoiceNo,
+                  description: "Refund for deleted sale #" + targetInvNo,
                   runningBalance: account.currentBalance,
                   createdAt: nowIso
                 });
               }
             }
 
-            // 4. Move to Recycle Bin
+            // 4. Move to Recycle Bin with complete metadata
             const recycleItem = {
-              id: "RB-" + Date.now(),
+              id: "RB-" + Date.now() + "-" + Math.random().toString(36).substr(2, 4),
               originalStore: "invoices",
+              originalId: targetId,
+              invoiceNo: targetInvNo,
               data: inv,
               deletedAt: nowIso,
               expiryAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
               itemType: "sale",
-              title: `বিক্রয় চালান #${invoiceNo}`,
-              summary: `কাস্টমার: ${inv.customerName || 'সাধারণ ক্রেতা'} • মোট বিল: ${formatMoney(inv.grandTotal || inv.total || 0)} • পরিশোধ: ${formatMoney(inv.paidAmount || 0)}`
+              title: `বিক্রয় চালান #${targetInvNo}`,
+              summary: `কাস্টমার: ${inv.customerName || (isBn ? 'সাধারণ ক্রেতা' : 'Walk-in Customer')} • মোট বিল: ${formatMoney(inv.grandTotal || inv.total || 0)} • পরিশোধ: ${formatMoney(inv.paidAmount || 0)}`
             };
             await txStore("recycleBin").put(recycleItem);
 
-            // 5. Delete original records
+            // 5. Delete original records from sales, invoices, and saleItems by matching both id and invoiceNo
+            // A) Delete from sales
+            const allSales = await txStore("sales").getAll() || [];
+            for (const s of allSales) {
+              const sId = String(s.id);
+              const sInvNo = String(s.invoiceNo || "");
+              if (
+                sId === targetId ||
+                sId === targetInvNo ||
+                sId === String(invoiceNo) ||
+                sInvNo === targetInvNo ||
+                sInvNo === targetId ||
+                sInvNo === String(invoiceNo)
+              ) {
+                await txStore("sales").delete(s.id);
+              }
+            }
+            await txStore("sales").delete(targetId);
+            await txStore("sales").delete(targetInvNo);
             await txStore("sales").delete(invoiceNo);
+
+            // B) Delete from invoices
+            const allInvs = await txStore("invoices").getAll() || [];
+            for (const i of allInvs) {
+              const iId = String(i.id);
+              const iInvNo = String(i.invoiceNo || "");
+              if (
+                iId === targetId ||
+                iId === targetInvNo ||
+                iId === String(invoiceNo) ||
+                iInvNo === targetInvNo ||
+                iInvNo === targetId ||
+                iInvNo === String(invoiceNo)
+              ) {
+                await txStore("invoices").delete(i.id);
+              }
+            }
+            await txStore("invoices").delete(targetId);
+            await txStore("invoices").delete(targetInvNo);
             await txStore("invoices").delete(invoiceNo);
+
+            // C) Delete from saleItems
+            const allSaleItems = await txStore("saleItems").getAll() || [];
+            for (const si of allSaleItems) {
+              const siInvNo = String(si.invoiceNo || "");
+              if (siInvNo === targetInvNo || siInvNo === targetId || siInvNo === String(invoiceNo)) {
+                await txStore("saleItems").delete(si.id);
+              }
+            }
 
             // 6. Remove corresponding VAT entries
             const vatEntries = await txStore("vat_ledger").getAll() || [];
-            const vatToRemove = vatEntries.filter(v => v.invoiceNo === invoiceNo || v.id === ("vat_sale_" + invoiceNo));
+            const vatToRemove = vatEntries.filter(v => 
+              String(v.invoiceNo) === targetInvNo || 
+              String(v.invoiceNo) === targetId ||
+              v.id === ("vat_sale_" + targetInvNo) ||
+              v.id === ("vat_sale_" + targetId)
+            );
             for (const v of vatToRemove) {
               await txStore("vat_ledger").delete(v.id);
             }
@@ -40958,9 +41042,9 @@ window.App.deleteSale = async function(invoiceNo) {
             const auditEntry = {
               id: "LOG-" + Date.now() + "-" + Math.random().toString(36).substr(2, 4),
               action: "Sale Deleted",
-              targetId: invoiceNo,
-              referenceId: invoiceNo,
-              details: `Deleted sale #${invoiceNo}. Stock, customer due, bank, and VAT adjusted.`,
+              targetId: targetInvNo,
+              referenceId: targetInvNo,
+              details: `Deleted sale #${targetInvNo}. Stock, customer due, bank, and VAT adjusted.`,
               timestamp: nowIso,
               createdAt: nowIso
             };
@@ -40968,14 +41052,55 @@ window.App.deleteSale = async function(invoiceNo) {
             await txStore("auditLog").put(auditEntry);
           });
 
-          this.closeModal();
+          // Synchronize fallback cache directly to prevent localStorage resurrection
+          try {
+            ["sales", "invoices"].forEach(storeName => {
+              if (typeof getFallbackStore === "function" && typeof saveFallbackStore === "function") {
+                const list = getFallbackStore(storeName) || [];
+                const filteredList = list.filter(item => 
+                  String(item && item.id) !== targetId &&
+                  String(item && item.id) !== targetInvNo &&
+                  String(item && item.id) !== String(invoiceNo) &&
+                  String(item && (item.invoiceNo || "")) !== targetInvNo &&
+                  String(item && (item.invoiceNo || "")) !== targetId &&
+                  String(item && (item.invoiceNo || "")) !== String(invoiceNo)
+                );
+                saveFallbackStore(storeName, filteredList);
+              }
+            });
+          } catch (fbErr) {
+            console.warn("Fallback store sync error on delete:", fbErr);
+          }
+
+          // Close active modal
+          if (typeof this.closeModal === "function") this.closeModal();
+          if (window.App && typeof window.App.closeModal === "function") window.App.closeModal();
+
           showToast(isBn ? "বিক্রয় চালান রিসাইকেল বিনে পাঠানো হয়েছে (৩০ দিন সংরক্ষিত থাকবে)" : "Sale invoice moved to recycle bin (30 days retention)", "info");
 
-          if (this.currentView === "invoices") renderInvoices(document.getElementById("viewContainer"));
-          else if (this.currentView === "sales") renderSalesPOS(document.getElementById("viewContainer"));
-          else if (this.currentView === "dashboard") renderDashboard(document.getElementById("viewContainer"));
-          else if (this.currentView === "vat_ledger") this.renderVatLedger();
-          else if (this.currentView === "cash_ledger" && typeof renderCashLedger === "function") renderCashLedger(document.getElementById("viewContainer"));
+          // Seamless and reliable view refresh across any active screen
+          const currentV = window.App?.currentView || this?.currentView || "invoices";
+          const viewContainer = document.getElementById("viewContainer");
+
+          if (currentV === "invoices" && typeof renderInvoices === "function") {
+            await renderInvoices(viewContainer);
+          } else if ((currentV === "sales" || currentV === "pos") && typeof renderSalesPOS === "function") {
+            await renderSalesPOS(viewContainer);
+          } else if (currentV === "dashboard" && typeof renderDashboard === "function") {
+            await renderDashboard(viewContainer);
+          } else if (currentV === "vat_ledger" && typeof window.App.renderVatLedger === "function") {
+            window.App.renderVatLedger();
+          } else if ((currentV === "cash_ledger" || currentV === "cash_book") && typeof renderCashLedger === "function") {
+            await renderCashLedger(viewContainer);
+          } else if (currentV === "due" && typeof renderDueManagement === "function") {
+            await renderDueManagement(viewContainer);
+          } else if (currentV === "customers" && typeof renderCustomers === "function") {
+            await renderCustomers(viewContainer);
+          } else if (currentV === "reports" && typeof renderReports === "function") {
+            await renderReports(viewContainer);
+          } else if (window.App && typeof window.App.navigate === "function") {
+            await window.App.navigate(currentV, false);
+          }
         } catch (err) {
           console.error("Sale deletion failed:", err);
           showToast(isBn ? "ভুল হয়েছে! বিক্রয় চালান মুছে ফেলা যায়নি।" : "Error! Failed to delete sale.", "error");

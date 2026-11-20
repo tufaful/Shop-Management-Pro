@@ -1,14 +1,17 @@
 {
-  "name": "react-example",
+  "name": "shop-management-pro",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tufaful/shop-management-pro.git"
+  },
   "type": "module",
   "scripts": {
-    "dev": "tsx server.ts",
+    "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
-    "start": "node server.ts",
-    "preview": "vite preview",
-    "clean": "rm -rf dist server.js",
+    "preview": "vite preview --port=3000 --host=0.0.0.0",
+    "clean": "rm -rf dist",
     "lint": "tsc --noEmit"
   },
   "dependencies": {

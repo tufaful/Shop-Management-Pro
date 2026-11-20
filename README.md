@@ -1,229 +1,268 @@
-# Shop Management Pro
+# Shop Management Pro 🛍️
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge)](https://tufaful.github.io/Shop-Management-Pro/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Netlify-00C7B7?style=for-the-badge&logo=netlify)](https://shopmanagementpro.netlify.app/)
+[![GitHub Profile](https://img.shields.io/badge/Developer-Tufaful%20Ambia-blue?style=for-the-badge&logo=github)](https://github.com/tufaful)
+[![Repository](https://img.shields.io/badge/GitHub-shop--management--pro-181717?style=for-the-badge&logo=github)](https://github.com/tufaful/shop-management-pro)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![Offline-First](https://img.shields.io/badge/Offline--First-100%25-blue?style=for-the-badge)](#-technical-stack--architecture)
-[![Bilingual](https://img.shields.io/badge/Bilingual-English%20%7C%20Bengali-orange?style=for-the-badge)](#-bilingual-localization-engine-english--bengali)
+[![Offline-First](https://img.shields.io/badge/Offline--First-100%25-brightgreen?style=for-the-badge)](#-technical-stack--architecture)
+[![Bilingual](https://img.shields.io/badge/Bilingual-English%20%7C%20Bengali-orange?style=for-the-badge)](#-technical-stack--architecture)
 
-**Shop Management Pro** is a high-performance, offline-first, all-in-one Business Management and Point of Sale (POS) solution. Designed for maximum speed, operational efficiency, and strict data privacy, it runs as a 100% standalone single-file HTML web application powered by client-side browser storage (IndexedDB). Your business operations, product inventory, billing transactions, customer records, and financial accounting remain completely local, private, and fully functional without requiring an active internet connection.
+---
+
+## 🌐 Live Web App
+
+Experience the full-featured, offline-ready application directly in your browser:  
+👉 **[https://shopmanagementpro.netlify.app/](https://shopmanagementpro.netlify.app/)**
+
+---
+
+## 📖 Introduction & Executive Overview
+
+**Shop Management Pro** is a modern, enterprise-grade business management suite, Point of Sale (POS), and retail ERP engineered specifically for fast-paced retail counters, commercial trading houses, and growing enterprises.
+
+Unlike conventional cloud-based point-of-sale software that charges recurring monthly subscriptions, requires constant high-speed internet connectivity, and stores sensitive customer and sales records on third-party servers, **Shop Management Pro runs 100% offline and locally inside your web browser**. Delivered as a **standalone, zero-dependency single-file web application (`index.html`)**, you can launch it instantly by double-clicking the file on any desktop, laptop, tablet, or smartphone.
+
+### 🌟 Why Choose Shop Management Pro?
+
+1. **Complete Data Sovereignty & 100% Privacy:**
+   All your business records—sales history, purchase costs, profit margins, customer credit ledgers, and employee payroll—remain strictly inside your device’s local browser database (IndexedDB). No data is ever transmitted to external servers.
+
+2. **Zero Recurring Fees or Subscriptions:**
+   Own your software outright with zero ongoing licensing fees, no per-transaction charges, and no user limits.
+
+3. **Lightning-Fast Counter Performance:**
+   Engineered with in-memory store caching and tokenized search indexing, product lookups, barcode scans, and view switches execute in less than a millisecond with zero lag or buffering.
+
+4. **Resilient Offline Architecture:**
+   Operates seamlessly during internet outages, network blackouts, or remote counter setups. Never miss a customer checkout due to a server failure.
+
+5. **Built-in Bilingual Support:**
+   Full native support for both **English 🇬🇧** and **Bengali (বাংলা) 🇧🇩** with one-click real-time language toggling.
+
+### 🎯 Who is it Built For?
+
+Shop Management Pro is designed to handle the daily operations of diverse business formats:
+
+- **Supermarkets & Grocery Stores:** High-speed barcode scanning, batch expiry tracking, and instant weigh-scale pricing.
+- **Pharmacies & Healthcare Retail:** Drug batch numbers, near-expiry alerts, and supplier procurement tracking.
+- **Fashion & Apparel Boutiques:** Multi-unit inventory, barcode sticker printing, customer loyalty points, and combo packs.
+- **Electronics & Hardware Stores:** Serialized warranty claim tracking, repair center stages, and EMI installment billing.
+- **Wholesale & Distribution Traders:** Multi-account banking (Bank/Cash/MFS), customer credit ledgers, and delivery partner COD reconciliation.
 
 ---
 
 ## 📑 Table of Contents
-- [🚀 Live Demo](#-live-demo)
-- [✨ Key Features & Modules](#-key-features--modules)
-  - [🛒 Point of Sale (POS) & Fast Billing](#-point-of-sale-pos--fast-billing)
-  - [📷 Barcode & QR Code Engine](#-barcode--qr-code-engine)
-  - [📦 Inventory, Stock & Batch Management](#-inventory-stock--batch-management)
-  - [🚚 Challan Hub & Delivery Management](#-challan-hub--delivery-management)
-  - [💰 Multi-Account Banking, Cash Ledger & Expenses](#-multi-account-banking-cash-ledger--expenses)
-  - [👥 CRM, Customer Due Ledgers & Supplier Procurement](#-crm-customer-due-ledgers--supplier-procurement)
-  - [💬 Instant WhatsApp Digital Receipts](#-instant-whatsapp-digital-receipts)
-  - [♻️ Smart Recycle Bin & Data Recovery](#️-smart-recycle-bin--data-recovery)
-  - [🔒 Security, Multi-Role Access & Vault Backup](#-security-multi-role-access--vault-backup)
-  - [🌐 Bilingual Localization Engine (English & Bengali)](#-bilingual-localization-engine-english--bengali)
-- [📋 Complete Module Directory (33+ Modules)](#-complete-module-directory-33-modules)
-- [🎯 Target Industries & Retailers](#-target-industries--retailers)
+
+- [🌐 Live Web App](#-live-web-app)
+- [📖 Introduction & Executive Overview](#-introduction--executive-overview)
+- [🚀 Quick Links](#-quick-links)
+- [✨ Core Enterprise Highlights](#-core-enterprise-highlights)
+  - [🛒 Point of Sale (POS) & Billing](#-point-of-sale-pos--billing)
+  - [📊 Enterprise Reports Hub (12 Sub-Tabs)](#-enterprise-reports-hub-12-sub-tabs)
+  - [📦 Advanced Inventory, Batches & Expiry](#-advanced-inventory-batches--expiry)
+  - [🚚 Courier Partners & COD Reconciliation](#-courier-partners--cod-reconciliation)
+  - [🏦 Multi-Account Financial Ledger (Bank, Cash & MFS)](#-multi-account-financial-ledger-bank-cash--mfs)
+  - [👔 HR, Staff Payroll & Leave Register](#-hr-staff-payroll--leave-register)
+  - [🛡️ Warranty Claims & Repair Center](#️-warranty-claims--repair-center)
+  - [🎁 Combo Product Bundles & Loyalty Points](#-combo-product-bundles--loyalty-points)
+  - [⚠️ Damage & Inventory Loss Write-Offs](#️-damage--inventory-loss-write-offs)
+  - [🏢 Fixed Assets & Net Book Valuation](#-fixed-assets--net-book-valuation)
+  - [🏛️ Govt Sales Tax & VAT Ledger](#️-govt-sales-tax--vat-ledger)
+  - [🔒 Security, Master PIN & Encrypted Vault](#-security-master-pin--encrypted-vault)
+- [📋 Complete Module Directory (35+ Modules)](#-complete-module-directory-35-modules)
 - [🛠 Technical Stack & Architecture](#-technical-stack--architecture)
+- [🖨️ Multi-Format Thermal & Invoice Print Engine](#️-multi-format-thermal--invoice-print-engine)
 - [📥 Installation & Deployment](#-installation--deployment)
-  - [1. Local Offline Usage](#1-local-offline-usage)
-  - [2. Web Hosting & Cloud Deployment](#2-web-hosting--cloud-deployment)
-  - [3. Local Area Network (LAN) Multi-Device Mode](#3-local-area-network-lan-multi-device-mode)
-  - [4. Firebase Cloud Integration with Google AI Studio](#4-firebase-cloud-integration-with-google-ai-studio)
-- [📱 Mobile App Support (APK & PWA)](#-mobile-app-support-apk--pwa)
-- [📖 Keyboard Shortcuts Guide](#-keyboard-shortcuts-guide)
-- [🛠 Emergency Account Recovery Protocol](#-emergency-account-recovery-protocol)
-- [🤝 Contributing & Support](#-contributing--support)
+- [📱 Mobile App Support (PWA & Android APK)](#-mobile-app-support-pwa--android-apk)
+- [⌨️ Keyboard Shortcuts Guide](#️-keyboard-shortcuts-guide)
+- [🤝 Developer Contact & Support](#-developer-contact--support)
 - [🛡 License](#-license)
 
 ---
 
-## 🚀 Live Demo
-Launch and test the full application immediately in any modern desktop, tablet, or smartphone browser:  
-🔗 **[Launch Shop Management Pro Live](https://tufaful.github.io/Shop-Management-Pro/)**
+## 🚀 Quick Links
 
----
-
-## ✨ Key Features & Modules
-
-### 🛒 Point of Sale (POS) & Fast Billing
-- **Lightning-Fast Checkout:** Rapid product addition via barcode scanning or real-time catalog search.
-- **Visual Product Grid & Filter Tabs:** Filter items instantly by category with clear stock level indicators.
-- **Cashier Hotkeys:** Seamless keyboard-driven counter operations (`F2`, `F4`, `F8`).
-- **Flexible Split Payments:** Split tender across Cash, Bank Transfer, Mobile Financial Services (bKash, Nagad, Rocket), and partial/credit due.
-- **Multi-Format Receipt Printing:** 
-  - ESC/POS Thermal 80mm & 58mm receipts with auto-cutter alignment.
-  - Standard A4 and A5 printable invoices and cash memos.
-  - Customizable store logos, invoice headers, tax details, and embedded QR verification codes.
-- **Held Carts (Suspended Sales):** Park active customer carts with custom notes and resume them at any time without losing selected items.
-- **Sales Return & Refund Processing:** Process return vouchers that automatically restore stock counts and adjust financial accounts.
-
-### 📷 Barcode & QR Code Engine
-- **In-App Camera Scanner:** Integrated camera scanner powered by HTML5-QRCode with camera swap, torchlight toggle, and zoom slider support.
-- **Hardware Scanner Compatibility:** 100% plug-and-play with all physical USB, Bluetooth, and 2.4G wireless laser barcode readers (instant input capture and auto-submission).
-- **Barcode Sticker Generator:** Design and print custom barcode sheets and price tags with selectable grid layouts, shop branding, and prices on standard paper or thermal sticker rolls.
-
-### 📦 Inventory, Stock & Batch Management
-- **Real-Time Stock Auditing:** Automatic stock decrement upon sale and increment upon purchase or return.
-- **Low Stock & Out-of-Stock Alerts:** Visual threshold badges and one-click filtering for depleted merchandise.
-- **Expiry Date Tracking:** Proactive alert system highlighting expiring and expired batches, essential for pharmacies, grocery, and cosmetics shops.
-- **Batches & Measurement Units:** Multi-unit support (Pieces, KG, Liter, Box, Packet, Dozen, etc.) with batch procurement costs.
-- **Stock Movement Log:** Detailed chronological audit trail for adjustments, sales, purchases, and write-offs.
-
-### 🚚 Challan Hub & Delivery Management
-- **Official Delivery Challans:** Issue professional delivery notes linked directly to sales or procurement orders.
-- **Gate Pass & Shipping Notes:** Print transport slips featuring driver names, vehicle numbers, itemized quantities, and recipient acknowledgment signature lines.
-- **Challan Status Filtering:** Filter delivery notes by date range, payment method, customer, and fulfillment status.
-
-### 💰 Multi-Account Banking, Cash Ledger & Expenses
-- **Unified Multi-Account Engine:** Consolidate Cash Drawer, Bank Accounts, and Mobile Financial Service (MFS) balances in one intuitive screen.
-- **Automated Dual-Entry Bookkeeping:** Real-time general ledger journals for revenues, payables, receivables, and overhead.
-- **Daily Cash Closing:** Shift and evening cash drawer reconciliation with physical currency denomination counting, discrepancy calculation, and printable closing reports.
-- **Capital Fund & Profit/Loss:** Track capital deposits/withdrawals, gross revenue, net margin, and comprehensive financial statements.
-- **VAT & Tax Register:** Dedicated sales VAT tracking with exportable tax logs.
-
-### 👥 CRM, Customer Due Ledgers & Supplier Procurement
-- **Customer Due Ledger (Receivables):** Full transaction history, outstanding balances, credit limits, and collection slips.
-- **Supplier Procurement & Payables:** Manage vendor directories, purchase invoices, payment vouchers, and return credits.
-- **Collection & Payment Receipts:** Print dedicated money receipts with official signatures and terms.
-
-### 💬 Instant WhatsApp Digital Receipts
-- **1-Click Digital Receipts:** Format and send digital receipts and invoice links to customers via WhatsApp Web or mobile app without printing paper.
-- **Account Statements via WhatsApp:** Send customer due summaries and payment vouchers directly to clients with a single click.
-
-### ♻️ Smart Recycle Bin & Data Recovery
-- **Accidental Deletion Protection:** Soft-delete engine that sends deleted products, customers, suppliers, invoices, and vouchers to the Recycle Bin.
-- **One-Click Instant Restore:** Restore accidentally deleted records back into active operational stores with complete relational integrity.
-- **Permanent Purge Option:** Permanently delete selected items or empty the entire bin when confirmed.
-
-### 🔒 Security, Multi-Role Access & Vault Backup
-- **Comprehensive Authentication:** Protect sensitive finances and settings with Master PIN, Gesture Pattern unlock, or Time-based Two-Factor Authentication (TOTP 2FA).
-- **Multi-Role Privileges:** Granular permissions separating Owner and Staff access rights.
-- **Vault Snapshot System:** Create instantaneous local state checkpoints to test bulk changes and rollback with zero risk.
-- **Triple-Format Backup:** 
-  1. Plain JSON Backup for manual audit.
-  2. Modular Selective Export (export only Products, Sales, or Accounts).
-  3. AES-256 Military-Grade Encrypted Backup protected by your custom passphrase.
-
-### 🌐 Bilingual Localization Engine (English & Bengali)
-- **Complete Bilingual Parity:** Every UI label, placeholder, report header, invoice template, and notification is fully localized in both **English 🇬🇧** and **Bengali (বাংলা) 🇧🇩**.
-- **Instant Hotkey Switching:** Switch between English and Bengali instantly using the header button or the keyboard shortcut `Alt + L` without refreshing the page.
-
----
-
-## 📋 Complete Module Directory (33+ Modules)
-
-| Category | Included Modules |
+| Resource | URL |
 | :--- | :--- |
-| **Sales & Billing** | 🛒 POS Terminal · 🧾 Sales Invoices · ↩️ Sales Returns · 🚚 Challan Hub · ⏳ Held Carts |
-| **Inventory & Stock** | 📦 Products Catalog · 📜 Stock History · 🏷️ Barcode Stickers · ⏰ Expiry Alerts · 📦 Batch Management · ⚖️ Measurement Units · 🗂️ Categories |
-| **Procurement & Supply** | 📥 Purchases · 📤 Purchase Returns · 🏢 Supplier Directory · 📑 Supplier Ledgers |
-| **Customers & Receivables** | 👥 Customer Directory · 📒 Customer Due Ledger · 💳 Due Collection Slips |
-| **Accounts & Finance** | 💵 Cash Book · 🏦 Bank Accounts & Ledgers · 📉 Daily Cash Closing · 💸 Operational Expenses · 📈 Other Income · 🏛️ Capital Fund · 📊 VAT Ledger |
-| **Intelligence & Reports** | 📈 Profit & Loss Statement · 📊 Inventory Valuation · 📋 Sales Trends & Financial Summaries · 🔍 Global Record Finder |
-| **System & Administration** | 🛡️ Security & 2FA · ♻️ Recycle Bin · 💾 Backup & Encrypted Vault · ⚙️ System Settings |
+| **Live Web App** | [https://shopmanagementpro.netlify.app/](https://shopmanagementpro.netlify.app/) |
+| **GitHub Repository** | [https://github.com/tufaful/shop-management-pro](https://github.com/tufaful/shop-management-pro) |
+| **Developer Profile** | [https://github.com/tufaful](https://github.com/tufaful) |
+| **Support Email** | [tufaful.inbox@gmail.com](mailto:tufaful.inbox@gmail.com) |
+| **WhatsApp Support** | [https://wa.me/tufaful](https://wa.me/tufaful) |
 
 ---
 
-## 🎯 Target Industries & Retailers
-Shop Management Pro is engineered for small, medium, and growing retail enterprises:
-- **Grocery & Supermarkets:** High-speed barcode checkout, weight-based selling, and fast daily cash closing.
-- **Pharmacies & Drugstores:** Medicine inventory, batch tracking, expiry date alerts, and instant prescription billing.
-- **Electronics & Hardware Stores:** Brand categorization, serial number tracking, and warranty receipts.
-- **Fashion, Clothing & Footwear:** Organized category layouts, sizes, and customer credit management.
-- **Departmental & Stationery Stores:** Extensive SKU catalogs with real-time stock alert thresholds.
-- **Restaurants, Bakeries & Cafes:** Counter billing with held carts, table memos, and split payment methods.
+## ✨ Core Enterprise Highlights
+
+### 🛒 Point of Sale (POS) & Billing
+- **Ultra-Fast Checkout:** Instant lookup via hardware barcode scanner, built-in device camera scanner, or fuzzy in-memory search.
+- **Dynamic Category Bar:** Filter items by category with visual stock indicators, low-stock warnings, and out-of-stock guards.
+- **Cashier Hotkeys:** Keyboard-driven sales workflow (`F2` search, `F4` customer lookup, `F8` checkout modal, `ESC` close).
+- **Split Tenders & Flexible Payment:** Accept Cash, Bank Transfer, Mobile Banking (bKash, Nagad, Rocket, Upay), or Partial/Credit Due.
+- **Held Carts (Suspended Sales):** Park multiple customer carts with custom timestamps and notes; resume or discard them anytime with one click.
+- **Live Customer Combobox Sync:** Automatically calculates customer outstanding balance, overdue alerts, and lifetime purchasing history during checkout.
+- **EMI & Installment Configurator:** Configure flexible installment plans for high-value sales with custom down-payments and monthly installments.
+
+### 📊 Enterprise Reports Hub (12 Sub-Tabs)
+1. **Overview & Executive P&L:** Real-time Gross Sales Revenue, COGS, Operating Expenses, Net Profit, and Gross Margin %.
+2. **Sales Invoices Report:** Filter sales invoices by date range, cashier, payment method, or fulfillment status.
+3. **Purchases & Vendor Ledger:** Track procurement invoices, supplier payment histories, and outstanding accounts payable.
+4. **Operating Expenses & Other Income:** Log store operational overheads (rent, utilities, packaging) and secondary income streams.
+5. **Customer Dues & Receivables:** Track outstanding balances with a 1-click automated WhatsApp payment reminder generator.
+6. **Product Performance Analytics:** Analyze sales volume, gross profit per SKU, and stock turnover velocity.
+7. **Category & Brand Breakdown:** Comparative revenue and margin performance across product categories and brands.
+8. **Courier & COD Analytics:** Monitor shipment volume, delivered parcels, collected COD funds, and courier shipping fees.
+9. **Fixed Assets Valuation:** Real-time asset register, initial purchase costs, depreciation schedules, and net book valuations.
+10. **Damage & Loss Write-Offs:** Incident logs, damaged inventory write-offs, and total financial losses.
+11. **HR, Staff Payroll & Leaves:** Monthly staff base salary allocations, payout vouchers, and employee leave records.
+12. **Govt Sales Tax & VAT Ledger:** Sales tax collections, input VAT credits, and official treasury deposit challans.
+- **Date Filters & CSV Export:** Filter by predefined ranges (Today, Yesterday, Last 7 Days, This Month, Last Month, This Year, Custom) and export clean CSV reports with 1-click.
+
+### 📦 Advanced Inventory, Batches & Expiry
+- **Multi-Unit SKU Management:** Track products with customized measurement units (Pcs, Kg, Ltr, Box, Pack, Dozen, etc.).
+- **Batch Numbers & Expiry Alerts:** Manage inventory batches, track expiry dates, receive near-expiry warning alerts, and enforce low-stock thresholds.
+- **Barcode Sticker Print Studio:** Generate and print custom barcode sticky labels in multi-column grid layouts with prices, barcodes, and shop names.
+- **Smart Stock Reorder:** Automatically calculates suggested reorder quantities based on historical sales velocity.
+
+### 🚚 Courier Partners & COD Reconciliation
+- **Courier Directory:** Pre-configured for major delivery partners (Steadfast, Pathao, RedX, Paperfly, Sundarban, SA Paribahan, etc.).
+- **Parcel Shipment Tracking:** Link sales invoices to tracking numbers and parcel delivery states (Pending, In-Transit, Delivered, Returned).
+- **COD Fund Reconciliation:** Track Cash-On-Delivery collected funds against pending courier disbursements and return shipping adjustments.
+
+### 🏦 Multi-Account Financial Ledger (Bank, Cash & MFS)
+- **Triple-Tender Cash Flow:** Manage Physical Cash Drawer, Commercial Bank Accounts, and Mobile Financial Services (bKash, Nagad, Rocket, Upay).
+- **Deposits, Withdrawals & Transfers:** Record inter-account fund transfers, bank deposits, cash withdrawals, and MFS fee deductions.
+- **Daily Cash Closing Register:** Record opening balance, actual counted cash, system expected cash, variance, and closing audit remarks.
+
+### 👔 HR, Staff Payroll & Leave Register
+- **Employee Directory:** Manage staff profiles, designations, base salaries, contact details, and joining dates.
+- **Salary Disbursement Engine:** Process monthly payroll payments with printable salary vouchers and automated cash book entries.
+- **Staff Leave Register:** Record casual, sick, and annual leave requests with approval status tracking.
+
+### 🛡️ Warranty Claims & Repair Center
+- **Warranty Ticket System:** Log customer warranty claims with serial numbers, issue descriptions, and claim dates.
+- **Lifecycle Tracking:** Track repair stages (Received, Under Inspection, Sent to Vendor, Repaired, Replaced, Delivered).
+- **Automated Customer Alerts:** Generate SMS and WhatsApp notification templates for warranty claim status updates.
+
+### 🎁 Combo Product Bundles & Loyalty Points
+- **Combo Product Kits:** Create bundled product packages (e.g., Grocery Combo, Gift Pack) that automatically deduct individual component inventory upon sale.
+- **Customer Loyalty Points:** Award reward points based on purchase amounts, track balances, and redeem points for instant discounts during checkout.
+
+### ⚠️ Damage & Inventory Loss Write-Offs
+- **Inventory Write-Off Log:** Record broken, expired, or spoiled merchandise with reason codes and cost assessments.
+- **Automated Stock Deduction:** Instantly deducts damaged quantities from live stock while recording net financial losses in the P&L statement.
+
+### 🏢 Fixed Assets & Net Book Valuation
+- **Asset Registration:** Record store machinery, computers, barcode scanners, POS hardware, electricals, and furniture.
+- **Depreciation Schedules:** Track initial acquisition costs, accumulated depreciation, and real-time net book values.
+
+### 🏛️ Govt Sales Tax & VAT Ledger
+- **Automated VAT Sync:** Synchronizes invoice sales tax and calculates net tax payable.
+- **Treasury Deposit Vouchers:** Log government tax authority treasury deposits with challan numbers and dates.
+
+### 🔒 Security, Master PIN & Encrypted Vault
+- **Master PIN Security:** Restrict access to administrative configurations, financial reports, settings, and deletion operations with a master PIN.
+- **Financial Lock Date:** Prevent historical transaction tampering, editing, or deletion prior to a set accounting lock date.
+- **Triple Backup Vault:**
+  1. **Plain JSON Backup:** Human-readable full database backup.
+  2. **Encrypted AES-256 Vault:** Password-protected encrypted snapshot for secure offsite archival.
+  3. **Modular CSV Exports:** Export individual database tables (Products, Sales, Customers, Expenses) to spreadsheet format.
+- **Recycle Bin & Data Recovery:** Soft-delete safeguard allowing easy restoration of accidentally deleted records.
+
+---
+
+## 📋 Complete Module Directory (35+ Modules)
+
+| Category | Included Features & Pages |
+| :--- | :--- |
+| **Sales & POS** | 🛒 POS Terminal · 🧾 Sales Invoices · ↩️ Sales Returns · 📑 Quotations / Proforma Invoices · 🚚 Delivery Hub · ⏳ Held Carts · 📅 EMI Installments |
+| **Inventory & Stock** | 📦 Product Catalog · 📜 Stock History · 🏷️ Barcode Sticky Labels · ⏰ Expiry Alerts · ⚖️ Measurement Units · 📂 Categories & Brands · 📦 Batches & Expiry · 🔄 Smart Reorder |
+| **Procurement** | 📥 Purchase Orders & Invoices · 📤 Purchase Returns · 🏢 Supplier Directory · 📑 Supplier Ledgers |
+| **Customers & Dues** | 👥 Customer Directory · 📒 Customer Due Ledgers · 💬 1-Click WhatsApp Reminders · 💳 Collection Slips · 🌟 Loyalty Points |
+| **Finance & Accounts** | 💵 Cash Book · 🏦 Bank & MFS Accounts (bKash/Nagad/Rocket/Upay) · 📉 Daily Cash Closing · 💸 Overhead Expenses · 💰 Other Income · 🏛️ VAT Ledger · 💼 Capital Account · 🔁 Recurring Payments |
+| **Enterprise Ops** | 🚚 Courier & COD Tracking · 🏢 Fixed Assets Valuation · ⚠️ Damage Write-offs · 👔 HR & Payroll · 🏖️ Staff Leaves · 🛡️ Warranty Center · 🎁 Combo Packs |
+| **Reports & Analytics** | 📊 12-Subtab Reports Hub · 📈 Profit & Loss Statement · 🏷️ Inventory Valuation · 🔍 Stock Audit & Reconciliation |
+| **Security & System** | 🔒 Master PIN Lock · 🔒 Financial Lock Date · ♻️ Recycle Bin · 💾 Encrypted Vault Backup & Restore · ⚙️ Shop Settings & Printer Config |
 
 ---
 
 ## 🛠 Technical Stack & Architecture
-- **Frontend Core:** Pure Vanilla TypeScript / JavaScript with reactive DOM state management.
-- **Styling & Design System:** Modern utility styling with comprehensive Dark & Light theme support.
-- **Vector Icons:** Embedded Lucide SVG vector icon set for standalone offline rendering.
-- **Local Persistence Layer:** Browser-native IndexedDB engine with indexed query cursors.
-- **Print Engine:** CSS print stylesheets optimized for standard laser/inkjet printers and ESC/POS thermal printers (80mm / 58mm).
-- **Distribution Model:** 100% self-contained Single Page Application (`index.html`).
+
+- **Runtime Architecture:** Pure Vanilla TypeScript / JavaScript with reactive DOM rendering (Zero external frontend frameworks).
+- **Styling Engine:** Responsive utility styling with built-in Dark & Light themes, mobile touch optimization, and fluid viewport scaling.
+- **Persistence Layer:** Client-side IndexedDB database engine providing sub-millisecond offline read/write operations with LocalStorage safety fallback.
+- **Data Caching & Indexing:** In-memory store cache with write-through mutation sync and tokenized search indexing for instant 0ms barcode and text lookups.
+- **Localization Engine:** Native English 🇬🇧 and Bengali (বাংলা) 🇧🇩 translation switcher with real-time UI re-rendering.
+- **Distribution Model:** Standalone Single-File Application (`index.html`). No Node.js runtime or backend server required for end users.
+
+---
+
+## 🖨️ Multi-Format Thermal & Invoice Print Engine
+
+Shop Management Pro features a built-in multi-format print engine with live print preview:
+
+- **ESC/POS Thermal Receipts:** Optimized for 80mm and 58mm thermal receipt printers with receipt auto-cutter alignment.
+- **Standard Commercial Invoices:** Printable A4 and A5 invoice layouts for formal commercial billing.
+- **Barcode Sticker Sheets:** Customizable multi-column printable barcode stickers.
+- **Ledger & Closing Reports:** Dedicated print sheets for Customer Ledgers, Supplier Ledgers, Daily Cash Closings, and Bank Statements.
 
 ---
 
 ## 📥 Installation & Deployment
 
-Because Shop Management Pro is bundled as a standalone single-file application, no complicated server configuration, database provisioning, or package installation is required.
+### 1. Live Web Version (Instant Access)
+Open the deployed web application at **[https://shopmanagementpro.netlify.app/](https://shopmanagementpro.netlify.app/)** in any modern desktop or mobile browser.
 
-### 1. Local Offline Usage
-1. Download the `index.html` file from the repository.
-2. Double-click to open it in any modern browser (Google Chrome, Microsoft Edge, Mozilla Firefox, Safari, Brave, or Opera).
-3. The app is ready to use immediately—no internet connection required.
+### 2. Direct Local Offline Usage (Easiest)
+1. Download or clone `index.html` from this repository.
+2. Double-click `index.html` to open it in any web browser (Chrome, Edge, Firefox, Safari, Brave).
+3. The application is immediately ready for offline business operations—no internet or local server needed.
 
-### 2. Web Hosting & Cloud Deployment
-- **GitHub Pages:** Fork or push the repository to GitHub, enable **GitHub Pages** under repository settings, and your POS is live globally in seconds.
-- **Netlify / Vercel:** Simply drag and drop the project folder or point the build to `index.html`.
-
-### 3. Local Area Network (LAN) Multi-Device Mode
-Host `index.html` on a primary in-store desktop (using XAMPP, Nginx, Apache, or a lightweight Node.js/Python server) to allow multiple cash counters, tablets, and mobile devices connected to the store's local Wi-Fi router to access the system simultaneously.
-
-### 4. Firebase Cloud Integration with Google AI Studio
-If your business operates across multiple branches or requires real-time cloud synchronization, multi-device central databases, and cloud authentication, **Firebase (Firestore and Firebase Authentication)** can be easily integrated into this application.
-
-- **Key Capabilities & Benefits:**
-  - 🔄 **Real-Time Multi-Device Sync:** Instantly synchronize sales, purchases, and stock updates across multiple cash registers, branches, and warehouses.
-  - 🌐 **Remote Central Management:** View live sales reports, inventory valuations, and cash balances from home or on the go.
-  - 🛡️ **Automated Cloud Backup:** Safeguard your business records against hardware damage, loss, or disk failure with automated cloud persistence.
-  - 👥 **Centralized Multi-User Access:** Secure cloud authentication with defined staff and manager roles.
-- **Seamless Integration via Google AI Studio:**
-  - Leveraging **Google AI Studio**, you can effortlessly provision Firebase Firestore databases, configure security rules, and wire authentication into the codebase without manual configuration hassles.
+### 3. Static Web Hosting
+Deploy `index.html` to any static web hosting provider:
+- **Netlify:** Drag and drop the directory containing `index.html` into Netlify (as configured on [shopmanagementpro.netlify.app](https://shopmanagementpro.netlify.app/)).
+- **GitHub Pages:** Enable GitHub Pages in repository settings pointing to the root branch containing `index.html`.
+- **Vercel:** Connect the repository or run `vercel deploy` for instant edge hosting.
 
 ---
 
-## 📱 Mobile App Support (APK & PWA)
+## 📱 Mobile App Support (PWA & Android APK)
 
-Shop Management Pro is fully responsive and touch-optimized for tablets, iPads, and smartphones:
-- **Progressive Web App (PWA):** Open the application in mobile Chrome or Safari, tap **"Add to Home Screen"**, and launch it just like a native mobile app with full-screen viewport support.
-- **Android APK Conversion:** Wrap the hosted link or local `index.html` file using tools such as **WebToApp**, **Website 2 APK Builder**, or **Capacitor** to compile a standalone installable Android APK file.
+- **Progressive Web App (PWA):** Open [https://shopmanagementpro.netlify.app/](https://shopmanagementpro.netlify.app/) in a mobile browser (Chrome/Safari) and tap **"Add to Home Screen"** to install it as a standalone app with offline icon launching.
+- **Android APK:** Wrap `index.html` using Capacitor, WebView, or WebToApp builder to build an installable Android `.apk` file for touch POS terminals and handheld devices.
 
 ---
 
-## 📖 Keyboard Shortcuts Guide
+## ⌨️ Keyboard Shortcuts Guide
 
-Speed up daily counter billing and navigation with integrated hotkeys:
-
-| Shortcut | Action | Description |
+| Shortcut | Action | Operational Description |
 | :--- | :--- | :--- |
-| **`F2`** | Product Search | Focus product catalog search input in POS |
-| **`F4`** | Customer Selector | Open customer lookup and selection combobox |
-| **`F8`** | Complete Sale | Trigger quick checkout / payment completion dialog |
-| **`Alt + M`** | All Features | Open navigation drawer with all 33+ modules |
-| **`Alt + L`** | Toggle Language | Switch instantly between English 🇬🇧 and Bengali 🇧🇩 |
-| **`Ctrl + /`** | Global Search | Open unified global navigation and record finder |
-| **`ESC`** | Close Modal | Dismiss any active dialog, popup, or preview sheet |
+| **`F2`** | POS Search | Focus product search box in POS terminal |
+| **`F4`** | Customer Lookup | Focus customer selector combobox |
+| **`F8`** | Quick Checkout | Trigger POS checkout modal |
+| **`Alt + M`** | Navigation Menu | Open feature navigation drawer |
+| **`Alt + L`** | Toggle Language | Switch between English 🇬🇧 and Bengali (বাংলা) 🇧🇩 |
+| **`ESC`** | Close Modal | Dismiss any active modal dialog or print preview |
 
 ---
 
-## 🛠 Emergency Account Recovery Protocol
+## 🤝 Developer Contact & Support
 
-If the shop administrator ever forgets the PIN or loses access to their 2FA credentials, account access can be recovered securely without losing business records:
-
-1. **Generate Challenge Code:** On the application lock screen, tap **Developer Rescue**. A unique random challenge code will be generated (e.g., `CHL-XXXX-XXXX`).
-2. **Contact Support:** Send this challenge code to the software author via [Email](mailto:ambia.inbox@gmail.com) or [WhatsApp](https://wa.me/tufaful).
-3. **Token Generation:** The author uses the companion **Developer Recovery Tool (`developer_recovery.html`)** to generate a single-use cryptographic **Rescue Token**.
-4. **Regain Access:** Enter the received token into the prompt to reset your master credentials and restore your account immediately.
-
----
-
-## 🤝 Contributing & Support
-Contributions, feedback, and feature suggestions are warmly welcomed!
-- Found a bug or need an improvement? Open an issue on the **[GitHub Issues](https://github.com/tufaful/Shop-Management-Pro/issues)** page.
-- Have a feature branch ready? Submit a **Pull Request**.
+- **Developer:** Tufaful Ambia
+- **Live Demo:** [https://shopmanagementpro.netlify.app/](https://shopmanagementpro.netlify.app/)
+- **GitHub Profile:** [https://github.com/tufaful](https://github.com/tufaful)
+- **Repository:** [https://github.com/tufaful/shop-management-pro](https://github.com/tufaful/shop-management-pro)
+- **Support Email:** [tufaful.inbox@gmail.com](mailto:tufaful.inbox@gmail.com)
+- **WhatsApp Support:** [https://wa.me/tufaful](https://wa.me/tufaful)
 
 ---
 
 ## 🛡 License
-This project is open-source and distributed under the terms of the **[MIT License](LICENSE)**.
 
-```
+Distributed under the **[MIT License](LICENSE)**.
+
+```text
 Copyright (c) 2026 Tufaful Ambia
 ```
-
----
 
 Developed with ❤️ by **Tufaful Ambia**.
